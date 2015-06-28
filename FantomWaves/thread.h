@@ -9,41 +9,30 @@ namespace fw{
 	void newthread(void(*function)(void*), void * parameter);
 
 	class thread{
-		void * handle;
-		mutable DWORD Result;
-		unsigned(__stdcall * Function)(void*);
-		void * Parameter;
-
-		void nullet(){
-			handle = NULL;
-			Function = NULL;
-			Parameter = NULL;
-		}
-
 	public:
 
 		thread(){ nullet(); }
 
 		void set(unsigned(__stdcall * function)(void*), void * parameter){
-			Function = function;
-			Parameter = parameter;
+			function_ = function;
+			parameter_ = parameter;
 		}
 		thread(unsigned(__stdcall * function)(void*), void * parameter){
 			handle = 0;
-			Function = function;
-			Parameter = parameter;
+			function_ = function;
+			parameter_ = parameter;
 		}
 
-		void set(unsigned(__stdcall * function)(void*)){ Function = function; }
+		void set(unsigned(__stdcall * function)(void*)){ function_ = function; }
 		thread(unsigned(__stdcall * function)(void*)){
 			nullet();
-			Function = function;
+			function_ = function;
 		}
 
-		void set(void * parameter){ Parameter = parameter; }
+		void set(void * parameter){ parameter_ = parameter; }
 		thread(void * parameter){
 			nullet();
-			Parameter = parameter;
+			parameter_ = parameter;
 		}
 
 		bool begin(unsigned(__stdcall * function)(void*), void * parameter){
@@ -59,28 +48,43 @@ namespace fw{
 			handle = reinterpret_cast<void *>(h);
 			return handle != NULL;
 		}
-		bool begin(unsigned(__stdcall * function)(void*)){ return begin(function, Parameter); }
-		bool begin(void * parameter){ return begin(Function, parameter); }
-		bool begin(){ return begin(Function, Parameter); }
+		bool begin(unsigned(__stdcall * function)(void*)){ return begin(function, parameter_); }
+		bool begin(void * parameter){ return begin(function_, parameter); }
+		bool begin(){ return begin(function_, parameter_); }
 
 		bool working() const {
 			if (handle == NULL) return false;
-			GetExitCodeThread(handle, &Result);
-			if (Result == STILL_ACTIVE) return true;
+			GetExitCodeThread(handle, &result_);
+			if (result_ == STILL_ACTIVE) return true;
 			return false;
 		}
 		bool working(unsigned long & target){
 			if (working()) return true;
 
-			target = Result;
+			target = result_;
 			return false;
 		}
 		bool resting(){ return !working(); }
 
-		unsigned long result() const { return Result; }
+		unsigned long result() const { return result_; }
 
 		void close(){ if (handle != 0) CloseHandle(handle); }
 		~thread(){ close(); }
+
+
+
+	private:
+		void * handle;
+		mutable DWORD result_;
+		unsigned(__stdcall * function_)(void*);
+		void * parameter_;
+
+		void nullet(){
+			handle = NULL;
+			function_ = NULL;
+			parameter_ = NULL;
+		}
+
 	};
 
 }

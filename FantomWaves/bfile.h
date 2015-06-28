@@ -27,12 +27,12 @@ namespace fw
 	 * closeを使って明示的にクローズすることも可能
 	 *
 	 */
-	class bfile
+	class Binfile
 	{
 	public:
-		bfile();
-		bfile(const char * path_);			// インスタンス化時にファイルパスを指定することができる。
-		bfile(const std::string & path_);	// インスタンス化時にファイルパスを指定することができる。
+		Binfile();
+		Binfile(const char * path_);			// インスタンス化時にファイルパスを指定することができる。
+		Binfile(const std::string & path_);	// インスタンス化時にファイルパスを指定することができる。
 
 		// path ********************************************************************************
 		/*
@@ -42,13 +42,13 @@ namespace fw
 		 *
 		 */
 
-		bfile & path(const char * path_);
-		bfile & path(const std::string & path_);
+		Binfile & path(const char * path_);
+		Binfile & path(const std::string & path_);
 		// *************************************************************************************
 
 		// (あらかじめ読み込んでおいた)ファイルの内容を、指定された変数にコピーし、そのバイト数分読み出し位置を進める
 		template<typename T>
-		bfile & operator>> (T & req)
+		Binfile & operator>> (T & req)
 		{
 			divide(req);
 			return *this;
@@ -60,22 +60,22 @@ namespace fw
 
 		const char * head();
 		uint byte() const;
-		bfile & clear();	// ファイルの内容を空にする
+		Binfile & clear();	// ファイルの内容を空にする
 
 		// ファイルに書き込む
 		template<typename T>
-		const bfile & operator<< (const T & req) const
+		const Binfile & operator<< (const T & req) const
 		{
 			write(req);
 			return *this;
 		}
 
-		bfile & move(int distance);		// 指定したバイト数分、読み出し位置をずらす
-		bfile & position(uint point);	// 読み出し位置(バイト単位)を直接指定する
+		Binfile & move(int distance);		// 指定したバイト数分、読み出し位置をずらす
+		Binfile & position(uint point);	// 読み出し位置(バイト単位)を直接指定する
 		uint position() const;			// 現在の読み出し位置(バイト単位)を取得する
 
-		bfile & open_to_read();		// 読み込み用として明示的にファイルを開く
-		bfile & open_to_write();	// 書き込み用として明示的にファイルを開く
+		Binfile & open_to_read();		// 読み込み用として明示的にファイルを開く
+		Binfile & open_to_write();	// 書き込み用として明示的にファイルを開く
 		void close();				// 明示的にファイルを閉じる
 
 		// divide ***********************************************************************
@@ -86,11 +86,11 @@ namespace fw
 		 *
 		 */
 
-		bfile & divide(void * req, uint size);
-		bfile & divide(std::string & req);
+		Binfile & divide(void * req, uint size);
+		Binfile & divide(std::string & req);
 
 		template<typename T>
-		bfile & divide(fw::vector<T> & req)
+		Binfile & divide(fw::vector<T> & req)
 		{
 			req.zerosize();
 			uint byte(0);
@@ -101,7 +101,7 @@ namespace fw
 		}
 
 		template<typename T>
-		bfile & divide(T & req)
+		Binfile & divide(T & req)
 		{
 			copy(req);
 			move(sizeof(T));
@@ -118,11 +118,11 @@ namespace fw
 		*/
 
 
-		bfile & copy(void * req, uint size);
-		bfile & copy(std::string & req);
+		Binfile & copy(void * req, uint size);
+		Binfile & copy(std::string & req);
 
 		template<typename T>
-		bfile & copy(fw::vector<T> & req)
+		Binfile & copy(fw::vector<T> & req)
 		{
 			req.zerosize();
 			uint byte(0);
@@ -134,7 +134,7 @@ namespace fw
 		}
 
 		template<typename T>
-		bfile & copy(T & req)
+		Binfile & copy(T & req)
 		{
 			open_if_need(readingmode);
 			req = *reinterpret_cast<const T *>(imutable_content().address(position()));
@@ -145,20 +145,20 @@ namespace fw
 
 		// write ************************************************************************
 
-		const bfile & write(const void * req, uint size) const;
+		const Binfile & write(const void * req, uint size) const;
 
 		template<typename T>
-		const bfile & write(const fw::vector<T> & req) const
+		const Binfile & write(const fw::vector<T> & req) const
 		{
 			*this << req.size();
 			for (uint i = 0; i < req.size(); ++i) *this << req[i];
 			return *this;
 		}
 
-		const bfile & write(const std::string & req) const;
+		const Binfile & write(const std::string & req) const;
 
 		template<typename T>
-		const bfile & write(const T & req) const
+		const Binfile & write(const T & req) const
 		{
 			write(&req, sizeof(T));
 			return *this;
@@ -170,7 +170,7 @@ namespace fw
 
 
 
-		~bfile();
+		~Binfile();
 	private:
 		enum
 		{
@@ -202,7 +202,7 @@ namespace fw
 	// Remember to correspond to DX-archiver ".dxa"
 	// Remember to write the class AccesserTo_bfile
 
-	class bfile
+	class Binfile
 	{
 	private:
 		class ErrorMode
@@ -241,12 +241,12 @@ namespace fw
 		std::string Path;
 	public:
 		const std::string & path() const { return Path; }
-		bfile & path(const char * filepath)
+		Binfile & path(const char * filepath)
 		{
 			Path = filepath;
 			return *this;
 		}
-		bfile & path(const std::string & filepath)
+		Binfile & path(const std::string & filepath)
 		{
 			path(filepath.c_str());
 			return *this;
@@ -256,7 +256,7 @@ namespace fw
 		bool Create;
 	public:
 		bool create() const { return Create; }
-		bfile & create(bool create)
+		Binfile & create(bool create)
 		{
 			Create = create;
 			return *this;
@@ -309,14 +309,14 @@ namespace fw
 			create(Create);
 		}
 	public:
-		bfile(){ Init(false); }
-		bfile(bool Create){ Init(Create); }
-		bfile(const char * Path, bool Create = false)
+		Binfile(){ Init(false); }
+		Binfile(bool Create){ Init(Create); }
+		Binfile(const char * Path, bool Create = false)
 		{
 			path(Path);
 			Init(Create);
 		}
-		bfile(const std::string & Path, bool Create = false)
+		Binfile(const std::string & Path, bool Create = false)
 		{
 			path(Path);
 			Init(Create);
@@ -326,7 +326,7 @@ namespace fw
 		vuchar Content;
 		uint beg;
 	public:
-		bfile & read()
+		Binfile & read()
 		{
 			FILE * fp = open(true);
 			if (fp == NULL)
@@ -348,7 +348,7 @@ namespace fw
 	private:
 		FILE * wfp;
 	public:
-		bfile & open()
+		Binfile & open()
 		{
 			wfp = open(false);
 			return *this;
@@ -359,90 +359,90 @@ namespace fw
 		bool rfell() const { return beg == -1; }
 
 	public:
-		bfile & clear(){
+		Binfile & clear(){
 			if (wfp != NULL) fclose(wfp);
 			FILE * fp = fopen(Path.c_str(), "wb");
 			if (fp != NULL) fclose(fp);
 			open();
 			return *this;
 		}
-		const bfile & clear() const
+		const Binfile & clear() const
 		{
-			bfile & ins = unconst_cast<bfile>(*this);
+			Binfile & ins = unconst_cast<Binfile>(*this);
 			ins.clear();
 			return *this;
 		}
 
 	public:
 		// Finaly this is called after when any "write" is called.
-		const bfile & write(const void * req, uint size) const
+		const Binfile & write(const void * req, uint size) const
 		{
 			if (wfp != NULL) fwrite(req, size, 1, wfp);
 			return *this;
 		}
-		bfile write(const void * req, uint size)
+		Binfile write(const void * req, uint size)
 		{
-			const bfile & ci = *this;
+			const Binfile & ci = *this;
 			ci.write(req, size);
 			return *this;
 		}
 
 		template<typename T>
-		const bfile & write(const fw::vector<T> & req) const
+		const Binfile & write(const fw::vector<T> & req) const
 		{
 			*this << req.size();
 			for (uint i = 0; i < req.size(); ++i) *this << req[i];
 			return *this;
 		}
 		template<typename T>
-		bfile & write(const fw::vector<T> & req)
+		Binfile & write(const fw::vector<T> & req)
 		{
-			const bfile & ci = *this;
+			const Binfile & ci = *this;
 			ci.write(req);
 			return *this;
 		}
 
-		const bfile & write(const std::string & req) const
+		const Binfile & write(const std::string & req) const
 		{
 			if (req.empty() == false) write(req.c_str(), req.length() + 1);
 			return *this;
 		}
-		bfile & write(const std::string & req)
+		Binfile & write(const std::string & req)
 		{
-			const bfile & ci = *this;
+			const Binfile & ci = *this;
 			ci.write(req);
 			return *this;
 		}
 
 		template<typename T>
-		const bfile & write(const T & req) const
+		const Binfile & write(const T & req) const
 		{
 			write(&req, sizeof(T));
 			return *this;
 		}
 		template<typename T>
-		bfile & write(const T & req)
+		Binfile & write(const T & req)
 		{
-			const bfile & ci = *this;
+			const Binfile & ci = *this;
 			ci.write(req);
 			return *this;
 		}
 
 		template<typename T>
-		const bfile operator<< (const T & req) const
+		const Binfile operator<< (const T & req) const
 		{
 			write(req);
 			return *this;
 		}
 		template<typename T>
-		bfile & operator<< (const T & req)
+		Binfile & operator<< (const T & req)
 		{
 			write(req);
 			return *this;
 		}
 
 	public:
-		bfile & close()
+		Binfile & close()
 		{
 			if (wfp != NULL) fclose(wfp);
 			wfp = NULL;
@@ -451,7 +451,7 @@ namespace fw
 
 	public:
 		// Finaly this is called after when any "divide" is called.
-		bfile & divide(void * req, uint size)
+		Binfile & divide(void * req, uint size)
 		{
 			if (rfell()) return *this;
 			if (ImutableContent().size() == 0) return *this;
@@ -460,7 +460,7 @@ namespace fw
 			return *this;
 		}
 		template<typename T>
-		bfile & divide(fw::vector<T> & req)
+		Binfile & divide(fw::vector<T> & req)
 		{
 			req.zerosize();
 			uint byte(0);
@@ -469,7 +469,7 @@ namespace fw
 			for (uint i = 0; i < byte; ++i) *this >> req.next();
 			return *this;
 		}
-		bfile & divide(std::string & req)
+		Binfile & divide(std::string & req)
 		{
 			if (rfell()) return *this;
 			if (ImutableContent().size() == 0) return *this;
@@ -478,7 +478,7 @@ namespace fw
 			return *this;
 		}
 		template<typename T>
-		bfile & divide(T & req)
+		Binfile & divide(T & req)
 		{
 			if (rfell()) return *this;
 			if (ImutableContent().size() == 0) return *this;
@@ -514,19 +514,19 @@ namespace fw
 		}
 
 	public:
-		bfile & move(int distance)
+		Binfile & move(int distance)
 		{
 			beg += distance;
 			return *this;
 		}
-		bfile & illusion(uint point)
+		Binfile & illusion(uint point)
 		{
 			beg = point;
 			return *this;
 		}
 
 	public:
-		~bfile(){ close(); }
+		~Binfile(){ close(); }
 
 	};
 

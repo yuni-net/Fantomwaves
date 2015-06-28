@@ -8,23 +8,22 @@
 namespace fw
 {
 
-	class wav
+	class Wav
 	{
 	public:
-		void * data(){ return Data; }
-		const void * data() const { return Data; }
-		DWORD size() const { return Size; }
-		int channels(){ return Channels; }
-		int bit(){ return Bit; }
+		void * data(){ return data_; }
+		const void * data() const { return data_; }
+		DWORD size() const { return size_; }
+		int channels(){ return channels_; }
+		int bit(){ return bit_; }
 		int Hz(){ return myHz; }
 
-		WORD wFormatTag(){ return pwf.wFormatTag; }
-		WORD nChannels(){ return pwf.nChannels; }
-		DWORD nSamplesPerSec(){ return pwf.nSamplesPerSec; }
-		DWORD nAvgBytesPerSec(){ return pwf.nAvgBytesPerSec; }
-		WORD nBlockAlign(){ return pwf.nBlockAlign; }
-		WORD wBitsPerSample(){ return pwf.wBitsPerSample; }
-		WORD cbSize(){ return 0; }
+		WORD format_tag(){ return pwf.format_tag; }
+		DWORD samples_per_sec(){ return pwf.samples_per_sec; }
+		DWORD avg_bytes_per_sec(){ return pwf.avg_bytes_per_sec; }
+		WORD block_align(){ return pwf.block_align; }
+		WORD bits_per_sample(){ return pwf.bits_per_sample; }
+		WORD pwf_size(){ return 0; }
 
 
 		bool load(const char * path);
@@ -42,21 +41,21 @@ namespace fw
 
 		typedef struct
 		{
-			WORD wFormatTag;
-			WORD nChannels;
-			DWORD nSamplesPerSec;
-			DWORD nAvgBytesPerSec;
-			WORD nBlockAlign;
-			WORD wBitsPerSample;
+			WORD format_tag;
+			WORD channels;
+			DWORD samples_per_sec;
+			DWORD avg_bytes_per_sec;
+			WORD block_align;
+			WORD bits_per_sample;
 
-		} PCMWAVEFORMAT;
+		} WaveFormatPCM;
 
-		PCMWAVEFORMAT pwf;
+		WaveFormatPCM pwf;
 
-		void * Data;
-		DWORD Size;
-		int Channels;
-		int Bit;
+		void * data_;
+		DWORD size_;
+		int channels_;
+		int bit_;
 		int myHz;
 
 		bool load(FILE * fp);
@@ -64,17 +63,17 @@ namespace fw
 		// return
 		//	bi2::False ... not wave file
 		//	bi2::True  ... This is wave file!!
-		bool CheckFormat(FILE * fp);
+		bool check_format(FILE * fp);
 
 		// return 
 		//	bi2::False ... failure
 		//	bi2::True  ... success
-		bool fmtProc(FILE * fp);
+		bool fmt_chunk(FILE * fp);
 
 		// return 
 		//	bi2::False ... failure
 		//	bi2::True  ... success
-		bool dataProc(FILE * fp);
+		bool data_chunk(FILE * fp);
 
 		// return 
 		//	bi2::False ... failure

@@ -8,87 +8,55 @@
 namespace fw
 {
 
-	class exeexe
+	class Exeexe
 	{
-	private:
-		class Handles
-		{
-		public:
-
-			HANDLE read, write;
-			Handles()
-			{
-				read = NULL;
-				write = NULL;
-			}
-			~Handles()
-			{
-				if (read != NULL) CloseHandle(read);
-				if (write != NULL) CloseHandle(write);
-			}
-		};
-
-		char* str;
-		DWORD Timeout;
-		bool succeeded;
-		std::string Exepath;
-		std::string Argus;
-		fw::thread mythread;
-
-		static fw_thread_ GetCUIAppMsgForThread(void * param)
-		{
-			exeexe & me = *(fw::pointer_cast<exeexe *>(param));
-			me.GetCUIAppMsg();
-			return 0;
-		}
-
 	public:
 
-		exeexe()
+		Exeexe()
 		{
 			str = NULL;
-			Timeout = INFINITE;
+			timeout_ = INFINITE;
 		}
 
-		exeexe & timeout(const DWORD timeout)
+		Exeexe & timeout(const DWORD timeout)
 		{
-			Timeout = timeout;
-			return *this;
-		}
-
-		exeexe & exepath(const char * path)
-		{
-			Exepath = fw::cnct() << '\"' << path < '\"';
-			return *this;
-		}
-		exeexe & exepath(const std::string & path)
-		{
-			Exepath = fw::cnct() << '\"' << path < '\"';
-			return *this;
-		}
-		exeexe & _exepath(const char * path)
-		{
-			Exepath = path;
-			return *this;
-		}
-		exeexe & _exepath(const std::string & path)
-		{
-			Exepath = path;
+			timeout_ = timeout;
 			return *this;
 		}
 
-		exeexe & argus(const char * path)
+		Exeexe & exepath(const char * path)
 		{
-			Argus = path;
+			exe_path = fw::cnct() << '\"' << path < '\"';
 			return *this;
 		}
-		exeexe & argus(const std::string & path)
+		Exeexe & exepath(const std::string & path)
 		{
-			Argus = path;
+			exe_path = fw::cnct() << '\"' << path < '\"';
+			return *this;
+		}
+		Exeexe & _exepath(const char * path)
+		{
+			exe_path = path;
+			return *this;
+		}
+		Exeexe & _exepath(const std::string & path)
+		{
+			exe_path = path;
 			return *this;
 		}
 
-		void GetCUIAppMsg()
+		Exeexe & argus(const char * path)
+		{
+			argus_ = path;
+			return *this;
+		}
+		Exeexe & argus(const std::string & path)
+		{
+			argus_ = path;
+			return *this;
+		}
+
+		void get_message()
 		{
 			succeeded = false;
 
@@ -109,12 +77,12 @@ namespace fw
 			si.hStdError = handles.write;
 
 			PROCESS_INFORMATION	pi;
-			char * cl = new char[Exepath.length() + 1 + Argus.length() + 1];	// 最初の+1はスペースの分。最後の+1は終端文字の分。
-			strcpy(cl, Exepath.c_str());
+			char * cl = new char[exe_path.length() + 1 + argus_.length() + 1];	// 最初の+1はスペースの分。最後の+1は終端文字の分。
+			strcpy(cl, exe_path.c_str());
 			strcat(cl, " ");	// スペースを追加
-			strcat(cl, Argus.c_str());
+			strcat(cl, argus_.c_str());
 			if (CreateProcess(NULL, cl, NULL, NULL, true, NORMAL_PRIORITY_CLASS, NULL, NULL, &si, &pi) == 0) return;
-			if (WaitForSingleObject(pi.hProcess, Timeout) != WAIT_OBJECT_0) return;
+			if (WaitForSingleObject(pi.hProcess, timeout_) != WAIT_OBJECT_0) return;
 			CloseHandle(pi.hThread);
 			CloseHandle(pi.hProcess);
 			fw_delarr(cl);
@@ -130,9 +98,9 @@ namespace fw
 			succeeded = true;
 		}
 
-		exeexe & begin()
+		Exeexe & begin()
 		{
-			mythread.begin(GetCUIAppMsgForThread, this);
+			mythread.begin(get_message_system, this);
 			return *this;
 		}
 
@@ -143,7 +111,42 @@ namespace fw
 
 		const char * result() const { return str; }
 
-		~exeexe(){ fw_delarr(str); }
+		~Exeexe(){ fw_delarr(str); }
+
+
+
+	private:
+		class Handles
+		{
+		public:
+
+			HANDLE read, write;
+			Handles()
+			{
+				read = NULL;
+				write = NULL;
+			}
+			~Handles()
+			{
+				if (read != NULL) CloseHandle(read);
+				if (write != NULL) CloseHandle(write);
+			}
+		};
+
+		char* str;
+		DWORD timeout_;
+		bool succeeded;
+		std::string exe_path;
+		std::string argus_;
+		fw::thread mythread;
+
+		static fw_thread_ get_message_system(void * param)
+		{
+			Exeexe & me = *(fw::pointer_cast<Exeexe *>(param));
+			me.get_message();
+			return 0;
+		}
+
 	};
 
 }

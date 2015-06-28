@@ -3,16 +3,11 @@
 namespace fw
 {
 
-	class exerror
+	class ExError
 	{
-
-	private:
-
-		char * str;
-
 	public:
 
-		exerror(){ str = NULL; }
+		ExError(){ str = NULL; }
 
 		const char * get(){
 			if(str != NULL){ LocalFree(str); str = NULL; }
@@ -33,7 +28,13 @@ namespace fw
 		}
 		const char * show(){ return str; }
 
-		~exerror(){ if(str != NULL){ LocalFree(str); str = NULL; } }
+		~ExError(){ if(str != NULL){ LocalFree(str); str = NULL; } }
+
+
+	private:
+
+		char * str;
+
 	};
 
 }

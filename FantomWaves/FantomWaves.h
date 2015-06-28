@@ -1,9 +1,11 @@
 /*
  * WELCOME TO FantomWaves !!
  *
+ * this library contains utility class and function and etc...
+ *
  * Version: 0.3.2
  * FinalUpdate: 23th Feb 2015
- * Author: NH 30070 AT12A171 10
+ * Author: yuni.net.liberty
  *
  */
 
@@ -21,13 +23,13 @@
 *xy2radian を実装
 
 [0.2.0]
-*bfile as_string(), head(), byte(), finished() を追加
+*Binfile as_string(), head(), byte(), finished() を追加
 
 [0.1.4]
 * wav 一部の、まちがったフォーマットに対応
 
 [0.1.3]
-* bfile 一度読み込むと開きっぱなしになるバグを修正
+* Binfile 一度読み込むと開きっぱなしになるバグを修正
 
 [0.1.2]
 * delfile関数の戻り値が逆だったのを修正

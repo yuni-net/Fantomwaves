@@ -10,12 +10,12 @@ int main()
 	std::string stdstring = "テストだよー!";
 	fw::vector<std::string> fwvector;
 	fwvector.add(std::string("No.01")).add(std::string("No.02")).add(std::string("日本語もおｋ？"));
-	fw::bfile("test.dat").clear() << integer << stdstring << fwvector;
+	fw::Binfile("test.dat").clear() << integer << stdstring << fwvector;
 
 	int gotint = 0;
 	std::string gotstr;
 	fw::vector<std::string> gotvec;
-	fw::bfile bf("test.dat");
+	fw::Binfile bf("test.dat");
 	bf >> gotint;
 	bf >> gotstr;
 	bf >> gotvec;

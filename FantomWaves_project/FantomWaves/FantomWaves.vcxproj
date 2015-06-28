@@ -40,10 +40,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\CppProjects\FantomWaves;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\projects\cpp\Fantomwaves\FantomWaves;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\CppProjects\FantomWaves;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\projects\cpp\Fantomwaves\FantomWaves;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

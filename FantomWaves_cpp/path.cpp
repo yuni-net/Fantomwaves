@@ -4,13 +4,13 @@ namespace fw
 {
 	bool iffile(const std::string & path)
 	{
-		WIN32_FIND_DATA FindData;
+		WIN32_FIND_DATA find_data;
 
-		HANDLE hFind = FindFirstFile(path.c_str(), &FindData);
-		bool inv = (hFind == INVALID_HANDLE_VALUE);
-		FindClose(hFind);
+		HANDLE find_hand = FindFirstFile(path.c_str(), &find_data);
+		bool inv = (find_hand == INVALID_HANDLE_VALUE);
+		FindClose(find_hand);
 		if (inv) return false;
-		if (!(FindData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) return true;
+		if (!(find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) return true;
 
 		return false;
 	}

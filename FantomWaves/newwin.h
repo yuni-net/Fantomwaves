@@ -8,71 +8,71 @@
 namespace fw
 {
 
-	const uint minID = 100;
+	const uint min_ID = 100;
 
 	class newwin
 	{
 		static std::map<uint, bool> buttons;
-		static uint ChildID;
+		static uint child_ID;
 
 		WNDCLASSEX wc;
-		HWND mainWH;
+		HWND main_winhand;
 
-		static bool notmine(const uint childID){ return childID < minID || childID >= ChildID; }
+		static bool notmine(const uint ID){ return ID < min_ID || ID >= child_ID; }
 
-		static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uiMsg, WPARAM wParam, LPARAM lParam){
-			static HBRUSH aquaBrsh = NULL;
-			uint childID = static_cast<uint>(GetWindowLongPtr(reinterpret_cast<HWND>(lParam), GWLP_ID));
+		static LRESULT CALLBACK win_proc(HWND hwnd, UINT message, WPARAM polym_param, LPARAM sub_param){
+			static HBRUSH aqua_brsh = NULL;
+			uint mychild_ID = static_cast<uint>(GetWindowLongPtr(reinterpret_cast<HWND>(sub_param), GWLP_ID));
 
-			switch (uiMsg)
+			switch (message)
 			{
 
 			case WM_COMMAND:
 
-				if (notmine(childID)) break;
+				if (notmine(mychild_ID)) break;
 
-				buttons[childID - 100] = true;
+				buttons[mychild_ID - 100] = true;
 				break;
 
 			case WM_CTLCOLORSTATIC:
 
-				if (notmine(childID)) break;
+				if (notmine(mychild_ID)) break;
 
-				if (childID % 2){
+				if (mychild_ID % 2){
 					// îwåiêFÇîíêFÇ…ê›íË
-					SetBkColor(reinterpret_cast<HDC>(wParam), 0xffffff);
+					SetBkColor(reinterpret_cast<HDC>(polym_param), 0xffffff);
 					return reinterpret_cast<LRESULT>(GetStockObject(WHITE_BRUSH));
 				}
 				else{
 					// îwåiêFÇêÖêFÇ…ê›íË
-					SetBkColor(reinterpret_cast<HDC>(wParam), RGB(200, 255, 255));
-					if (aquaBrsh == NULL) aquaBrsh = CreateSolidBrush(RGB(200, 255, 255));
-					return reinterpret_cast<LRESULT>(aquaBrsh);
+					SetBkColor(reinterpret_cast<HDC>(polym_param), RGB(200, 255, 255));
+					if (aqua_brsh == NULL) aqua_brsh = CreateSolidBrush(RGB(200, 255, 255));
+					return reinterpret_cast<LRESULT>(aqua_brsh);
 				}
 				break;
 
 			case WM_DESTROY:
 
-				if (aquaBrsh != NULL){
-					DeleteObject(aquaBrsh);
-					aquaBrsh = NULL;
+				if (aqua_brsh != NULL){
+					DeleteObject(aqua_brsh);
+					aqua_brsh = NULL;
 				}
 
 				PostQuitMessage(0);
 				break;
 			}
 
-			return DefWindowProc(hwnd, uiMsg, wParam, lParam);
+			return DefWindowProc(hwnd, message, polym_param, sub_param);
 		}
 
-		static void InitIndex(uint index){ buttons[index] = false; }
+		static void init_index(uint index){ buttons[index] = false; }
 		static bool clicked(uint index){
 			bool res = buttons[index];
-			InitIndex(index);
+			init_index(index);
 			return res;
 		}
 
-		static HMENU childID(){ return reinterpret_cast<HMENU>(ChildID++); }
+		static HMENU get_child_ID(){ return reinterpret_cast<HMENU>(child_ID++); }
 
 	public:
 
@@ -93,7 +93,7 @@ namespace fw
 					x, y,
 					width, height,
 					windle,
-					newwin::childID(),
+					newwin::get_child_ID(),
 					GetModuleHandle(NULL),
 					NULL
 					);
@@ -132,7 +132,7 @@ namespace fw
 					x, y,
 					width, height,
 					windle,
-					newwin::childID(),
+					newwin::get_child_ID(),
 					GetModuleHandle(NULL),
 					NULL
 					);
@@ -178,7 +178,7 @@ namespace fw
 					x, y,
 					width, height,
 					windle,
-					newwin::childID(),
+					newwin::get_child_ID(),
 					GetModuleHandle(NULL),
 					NULL
 					);
@@ -222,11 +222,11 @@ namespace fw
 				if (defbutton) attribute = attribute | BS_DEFPUSHBUTTON;
 				else attribute = attribute | BS_PUSHBUTTON;
 
-				HMENU id = newwin::childID();
+				HMENU id = newwin::get_child_ID();
 				index = reinterpret_cast<uint>(id);
 				index -= 100;
 
-				newwin::InitIndex(index);
+				newwin::init_index(index);
 
 				handle = CreateWindow(
 					"BUTTON",
@@ -263,14 +263,14 @@ namespace fw
 			wc.hIcon = NULL;
 			wc.hIconSm = NULL;
 			wc.hInstance = GetModuleHandle(NULL);
-			wc.lpfnWndProc = WindowProc;
+			wc.lpfnWndProc = win_proc;
 			wc.lpszClassName = "myClass";
 			wc.lpszMenuName = NULL;
 			wc.style = CS_DBLCLKS;
 
 			RegisterClassEx(&wc);
 
-			mainWH = CreateWindowEx(
+			main_winhand = CreateWindowEx(
 				WS_EX_TOOLWINDOW,
 				"myClass",
 				title.c_str(),
@@ -280,16 +280,16 @@ namespace fw
 				NULL, NULL, GetModuleHandle(NULL), NULL
 				);
 
-			ShowWindow(mainWH, SW_SHOWDEFAULT);
-			UpdateWindow(mainWH);
+			ShowWindow(main_winhand, SW_SHOWDEFAULT);
+			UpdateWindow(main_winhand);
 		}
 		newwin(const std::string &title, int width = CW_USEDEFAULT, int height = CW_USEDEFAULT){ init(title, width, height); }
 
-		HWND handle() const { return mainWH; }
+		HWND handle() const { return main_winhand; }
 
 		newwin & del(){
-			for (uint i = minID; i < ChildID; ++i) DestroyWindow(reinterpret_cast<HWND>(i));
-			DestroyWindow(mainWH);
+			for (uint i = min_ID; i < child_ID; ++i) DestroyWindow(reinterpret_cast<HWND>(i));
+			DestroyWindow(main_winhand);
 			return *this;
 		}
 		~newwin(){ del(); }

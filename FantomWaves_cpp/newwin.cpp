@@ -3,6 +3,6 @@
 namespace fw
 {
 	std::map<uint, bool> newwin::buttons;
-	uint newwin::ChildID = minID;
+	uint newwin::child_ID = min_ID;
 
 }

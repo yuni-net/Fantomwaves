@@ -5,9 +5,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="FantomWaves\bfile">
-      <UniqueIdentifier>{35f4b346-4c88-4665-b5b2-6cccb58ae252}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FantomWaves\bitflag">
       <UniqueIdentifier>{20c29061-ee5b-4507-96d5-57566fcb1ca5}</UniqueIdentifier>
     </Filter>
@@ -50,11 +47,14 @@
     <Filter Include="FantomWaves\xy2radian">
       <UniqueIdentifier>{f1fdb7ef-199c-47c4-9052-043b79c27b01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\Binfile">
+      <UniqueIdentifier>{35f4b346-4c88-4665-b5b2-6cccb58ae252}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp">
-      <Filter>FantomWaves\bfile</Filter>
+      <Filter>FantomWaves\Binfile</Filter>
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp">
       <Filter>FantomWaves\bitflag</Filter>
@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\bfile.h">
-      <Filter>FantomWaves\bfile</Filter>
+      <Filter>FantomWaves\Binfile</Filter>
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\bitflag.h">
       <Filter>FantomWaves\bitflag</Filter>

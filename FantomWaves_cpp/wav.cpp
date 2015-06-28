@@ -1,6 +1,6 @@
-#include <wav.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <Wav.h>
 #include <cast.h>
 #include <includes.h>
 
@@ -10,7 +10,7 @@
 namespace fw
 {
 
-	bool wav::load(FILE * fp)
+	bool Wav::load(FILE * fp)
 	{
 		typedef struct
 		{
@@ -19,29 +19,29 @@ namespace fw
 			char c;
 			char d;
 
-		} chunk;
+		} Chunk;
 
 
-		if (CheckFormat(fp) == false)
+		if (check_format(fp) == false)
 		{
 			return false;
 		}
 
 		while (true)
 		{
-			chunk c;
+			Chunk c;
 
 			if (fread(&c, 4, 1, fp) == 0) return false;
 
 			if (c.a == 'f' && c.b == 'm' && c.c == 't' && c.d == ' ')
 			{
-				if (fmtProc(fp) == false) return false;
+				if (fmt_chunk(fp) == false) return false;
 				continue;
 			}
 
 			if (c.a == 'd' && c.b == 'a' && c.c == 't' && c.d == 'a')
 			{
-				if (dataProc(fp) == false) return false;
+				if (data_chunk(fp) == false) return false;
 				return true;
 			}
 
@@ -54,7 +54,7 @@ namespace fw
 		return false;
 	}
 
-	bool wav::load(const char * path)
+	bool Wav::load(const char * path)
 	{
 		FILE * fp = fopen(path, "rb");
 
@@ -76,7 +76,7 @@ namespace fw
 	// return
 	//	false ... not wave file
 	//	true  ... This is wave file!!
-	bool wav::CheckFormat(FILE * fp)
+	bool Wav::check_format(FILE * fp)
 	{
 		typedef struct
 		{
@@ -90,10 +90,10 @@ namespace fw
 			char V;
 			char E;
 
-		} format;
+		} Format;
 
 
-		format f;
+		Format f;
 
 		if (fread(&f, 4 * 3, 1, fp) == 0) return false;
 		if (f.R != 'R') return false;
@@ -111,24 +111,24 @@ namespace fw
 	// return 
 	//	false ... failure
 	//	true  ... success
-	bool wav::fmtProc(FILE * fp)
+	bool Wav::fmt_chunk(FILE * fp)
 	{
 		if (fseek(fp, 4, SEEK_CUR) != 0) return false;	// ChunkSize. but Untrustworthy
 		if (fread(&pwf, sizeof(unsigned short) * 4 + sizeof(unsigned int) * 2, 1, fp) == 0) return false;
 
-		Channels = pwf.nChannels;
-		if (pwf.wFormatTag == 1)	// This format is PCM
+		channels_ = pwf.channels;
+		if (pwf.format_tag == 1)	// This format is PCM
 		{
-			if (pwf.wBitsPerSample != 8 && pwf.wBitsPerSample != 16)
+			if (pwf.bits_per_sample != 8 && pwf.bits_per_sample != 16)
 			{
 				return false;
 			}
 
 			short work;
-			if (fread(&work, 2, 1, fp) == 0) return false;	// maybe there are zero (extended chunk size)
+			if (fread(&work, 2, 1, fp) == 0) return false;	// maybe there are zero (extended Chunk size)
 			if (work == 0)
 			{
-				// ignore this extended chunk size
+				// ignore this extended Chunk size
 			}
 			else
 			{
@@ -138,11 +138,11 @@ namespace fw
 		else
 		{
 			short exchsize;
-			if (fread(&exchsize, 2, 1, fp) == 0) return false;	// extended chunk size
-			if (fseek(fp, exchsize, SEEK_CUR) != 0) return false;	// this time I don't support extended chunk.
+			if (fread(&exchsize, 2, 1, fp) == 0) return false;	// extended Chunk size
+			if (fseek(fp, exchsize, SEEK_CUR) != 0) return false;	// this time I don't support extended Chunk.
 		}
-		Bit = pwf.wBitsPerSample;
-		myHz = pwf.nSamplesPerSec;
+		bit_ = pwf.bits_per_sample;
+		myHz = pwf.samples_per_sec;
 
 		return true;
 	}
@@ -150,7 +150,7 @@ namespace fw
 	// return 
 	//	false ... failure
 	//	true  ... success
-	bool wav::unsupported_chunk(FILE * fp)	// this time I ignore it.
+	bool Wav::unsupported_chunk(FILE * fp)	// this time I ignore it.
 	{
 		long size = 0;
 
@@ -163,31 +163,31 @@ namespace fw
 	// return 
 	//	false ... failure
 	//	true  ... success
-	bool wav::dataProc(FILE * fp)
+	bool Wav::data_chunk(FILE * fp)
 	{
 		unsigned long quotient;
 		unsigned long surplus;
 		unsigned long minsize = 8192;
 
-		if (fread(&(Size), 4, 1, fp) == 0) return false;
-		Data = malloc(size());
+		if (fread(&(size_), 4, 1, fp) == 0) return false;
+		data_ = malloc(size());
 		if (data() == NULL) return false;
 
 		quotient = size() / minsize;
 		surplus = size() % minsize;
 		for (unsigned long i = 0; i < quotient; ++i)
 		{
-			if (fread(fw::pointer_cast<char *>(Data)+minsize*i, 1, minsize, fp) == 0)
+			if (fread(fw::pointer_cast<char *>(data_) +minsize*i, 1, minsize, fp) == 0)
 			{
-				free(Data);
+				free(data_);
 				return false;
 			}
 		}
 		if (surplus != 0)
 		{
-			if (fread(fw::pointer_cast<char *>(Data)+quotient*minsize, 1, surplus, fp) == 0)
+			if (fread(fw::pointer_cast<char *>(data_) +quotient*minsize, 1, surplus, fp) == 0)
 			{
-				free(Data);
+				free(data_);
 				return false;
 			}
 		}
