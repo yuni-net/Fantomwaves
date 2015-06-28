@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8BE6E710-D181-4EF0-B058-FF0AF6362E4D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>FantomWaves</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\CppProjects\FantomWaves;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\MoNoQLoREATOR\Documents\CppProjects\FantomWaves;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newwin.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\FantomWaves\bfile.h" />
+    <ClInclude Include="..\..\FantomWaves\bitflag.h" />
+    <ClInclude Include="..\..\FantomWaves\cast.h" />
+    <ClInclude Include="..\..\FantomWaves\cnct.h" />
+    <ClInclude Include="..\..\FantomWaves\copydire.h" />
+    <ClInclude Include="..\..\FantomWaves\delete.h" />
+    <ClInclude Include="..\..\FantomWaves\eps.h" />
+    <ClInclude Include="..\..\FantomWaves\exchange.h" />
+    <ClInclude Include="..\..\FantomWaves\exeexe.h" />
+    <ClInclude Include="..\..\FantomWaves\exerror.h" />
+    <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
+    <ClInclude Include="..\..\FantomWaves\filesize.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_enum_.h" />
+    <ClInclude Include="..\..\FantomWaves\includes.h" />
+    <ClInclude Include="..\..\FantomWaves\newdire.h" />
+    <ClInclude Include="..\..\FantomWaves\newshortcut.h" />
+    <ClInclude Include="..\..\FantomWaves\newwin.h" />
+    <ClInclude Include="..\..\FantomWaves\nullice.h" />
+    <ClInclude Include="..\..\FantomWaves\path.h" />
+    <ClInclude Include="..\..\FantomWaves\popup.h" />
+    <ClInclude Include="..\..\FantomWaves\publicdef.h" />
+    <ClInclude Include="..\..\FantomWaves\ring.h" />
+    <ClInclude Include="..\..\FantomWaves\slice.h" />
+    <ClInclude Include="..\..\FantomWaves\stdrandom.h" />
+    <ClInclude Include="..\..\FantomWaves\thread.h" />
+    <ClInclude Include="..\..\FantomWaves\trade.h" />
+    <ClInclude Include="..\..\FantomWaves\typedef.h" />
+    <ClInclude Include="..\..\FantomWaves\vector.h" />
+    <ClInclude Include="..\..\FantomWaves\view.h" />
+    <ClInclude Include="..\..\FantomWaves\vtypedef.h" />
+    <ClInclude Include="..\..\FantomWaves\wav.h" />
+    <ClInclude Include="..\..\FantomWaves\window.h" />
+    <ClInclude Include="..\..\FantomWaves\xrandom.h" />
+    <ClInclude Include="..\..\FantomWaves\zeromemory.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
