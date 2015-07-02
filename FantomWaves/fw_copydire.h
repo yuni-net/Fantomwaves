@@ -1,9 +1,9 @@
 #pragma once
 
-#include "includes.h"
+#include "fw_includes.h"
 #include <ShellAPI.h>
-#include "zeromemory.h"
-#include "cnct.h"
+#include "fw_zeromemory.h"
+#include "fw_cnct.h"
 
 namespace fw
 {

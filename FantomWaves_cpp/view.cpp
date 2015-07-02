@@ -1,4 +1,4 @@
-#include <view.h>
+#include <fw_view.h>
 
 namespace fw
 {

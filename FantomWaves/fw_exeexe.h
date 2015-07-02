@@ -1,7 +1,7 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "thread.h"
+#include "fw_thread.h"
 
 #pragma warning(disable : 4996)
 

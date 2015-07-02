@@ -1,4 +1,4 @@
-#include <newwin.h>
+#include <fw_newwin.h>
 
 namespace fw
 {

@@ -1,4 +1,4 @@
-#include <bitflag.h>
+#include <fw_bitflag.h>
 
 namespace fw
 {

@@ -8,13 +8,13 @@ int main()
 	fw::uint size = fw::filesize("test.txt");
 	int integer = 2525;
 	std::string stdstring = "テストだよー!";
-	fw::vector<std::string> fwvector;
+	fw::Array<std::string> fwvector;
 	fwvector.add(std::string("No.01")).add(std::string("No.02")).add(std::string("日本語もおｋ？"));
 	fw::Binfile("test.dat").clear() << integer << stdstring << fwvector;
 
 	int gotint = 0;
 	std::string gotstr;
-	fw::vector<std::string> gotvec;
+	fw::Array<std::string> gotvec;
 	fw::Binfile bf("test.dat");
 	bf >> gotint;
 	bf >> gotstr;

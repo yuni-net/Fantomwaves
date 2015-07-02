@@ -83,6 +83,43 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_Array.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_Binfile.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_bitflag.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_cast.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_cnct.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_copydire.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_delete.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_enum_.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_eps.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_exchange.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_exeexe.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_exerror.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_filesize.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_includes.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_newdire.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_newwin.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_nullice.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_path.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_popup.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_publicdef.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_ring.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_slice.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_stdrandom.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_thread.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_trade.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_typedef.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_view.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_vtypedef.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_wav.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_window.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_xrandom.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
@@ -98,42 +135,6 @@
     <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\FantomWaves\bfile.h" />
-    <ClInclude Include="..\..\FantomWaves\bitflag.h" />
-    <ClInclude Include="..\..\FantomWaves\cast.h" />
-    <ClInclude Include="..\..\FantomWaves\cnct.h" />
-    <ClInclude Include="..\..\FantomWaves\copydire.h" />
-    <ClInclude Include="..\..\FantomWaves\delete.h" />
-    <ClInclude Include="..\..\FantomWaves\eps.h" />
-    <ClInclude Include="..\..\FantomWaves\exchange.h" />
-    <ClInclude Include="..\..\FantomWaves\exeexe.h" />
-    <ClInclude Include="..\..\FantomWaves\exerror.h" />
-    <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
-    <ClInclude Include="..\..\FantomWaves\filesize.h" />
-    <ClInclude Include="..\..\FantomWaves\fw_enum_.h" />
-    <ClInclude Include="..\..\FantomWaves\includes.h" />
-    <ClInclude Include="..\..\FantomWaves\newdire.h" />
-    <ClInclude Include="..\..\FantomWaves\newshortcut.h" />
-    <ClInclude Include="..\..\FantomWaves\newwin.h" />
-    <ClInclude Include="..\..\FantomWaves\nullice.h" />
-    <ClInclude Include="..\..\FantomWaves\path.h" />
-    <ClInclude Include="..\..\FantomWaves\popup.h" />
-    <ClInclude Include="..\..\FantomWaves\publicdef.h" />
-    <ClInclude Include="..\..\FantomWaves\ring.h" />
-    <ClInclude Include="..\..\FantomWaves\slice.h" />
-    <ClInclude Include="..\..\FantomWaves\stdrandom.h" />
-    <ClInclude Include="..\..\FantomWaves\thread.h" />
-    <ClInclude Include="..\..\FantomWaves\trade.h" />
-    <ClInclude Include="..\..\FantomWaves\typedef.h" />
-    <ClInclude Include="..\..\FantomWaves\vector.h" />
-    <ClInclude Include="..\..\FantomWaves\view.h" />
-    <ClInclude Include="..\..\FantomWaves\vtypedef.h" />
-    <ClInclude Include="..\..\FantomWaves\wav.h" />
-    <ClInclude Include="..\..\FantomWaves\window.h" />
-    <ClInclude Include="..\..\FantomWaves\xrandom.h" />
-    <ClInclude Include="..\..\FantomWaves\zeromemory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

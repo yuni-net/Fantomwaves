@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include "newwin.h"
-#include "typedef.h"
+#include "fw_newwin.h"
+#include "fw_typedef.h"
 
 namespace fw
 {

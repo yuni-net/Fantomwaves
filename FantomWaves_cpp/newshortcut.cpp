@@ -1,4 +1,4 @@
-#include <newshortcut.h>
+#include <fw_newshortcut.h>
 
 namespace fw
 {

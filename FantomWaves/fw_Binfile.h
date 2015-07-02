@@ -1,12 +1,12 @@
 #define _CRT_SECURE_NO_DEPRECATE
 #pragma once
 
-#include "includes.h"
-#include "typedef.h"
-#include "vtypedef.h"
-#include "cast.h"
-#include "filesize.h"
-#include "path.h"
+#include "fw_includes.h"
+#include "fw_typedef.h"
+#include "fw_vtypedef.h"
+#include "fw_cast.h"
+#include "fw_filesize.h"
+#include "fw_path.h"
 
 #pragma warning(push)
 #pragma warning(disable:4996)
@@ -90,7 +90,7 @@ namespace fw
 		Binfile & divide(std::string & req);
 
 		template<typename T>
-		Binfile & divide(fw::vector<T> & req)
+		Binfile & divide(fw::Array<T> & req)
 		{
 			req.zerosize();
 			uint byte(0);
@@ -122,7 +122,7 @@ namespace fw
 		Binfile & copy(std::string & req);
 
 		template<typename T>
-		Binfile & copy(fw::vector<T> & req)
+		Binfile & copy(fw::Array<T> & req)
 		{
 			req.zerosize();
 			uint byte(0);
@@ -148,7 +148,7 @@ namespace fw
 		const Binfile & write(const void * req, uint size) const;
 
 		template<typename T>
-		const Binfile & write(const fw::vector<T> & req) const
+		const Binfile & write(const fw::Array<T> & req) const
 		{
 			*this << req.size();
 			for (uint i = 0; i < req.size(); ++i) *this << req[i];
@@ -388,14 +388,14 @@ namespace fw
 		}
 
 		template<typename T>
-		const Binfile & write(const fw::vector<T> & req) const
+		const Binfile & write(const fw::Array<T> & req) const
 		{
 			*this << req.size();
 			for (uint i = 0; i < req.size(); ++i) *this << req[i];
 			return *this;
 		}
 		template<typename T>
-		Binfile & write(const fw::vector<T> & req)
+		Binfile & write(const fw::Array<T> & req)
 		{
 			const Binfile & ci = *this;
 			ci.write(req);
@@ -460,7 +460,7 @@ namespace fw
 			return *this;
 		}
 		template<typename T>
-		Binfile & divide(fw::vector<T> & req)
+		Binfile & divide(fw::Array<T> & req)
 		{
 			req.zerosize();
 			uint byte(0);
