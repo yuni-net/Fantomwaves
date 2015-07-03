@@ -2,6 +2,9 @@
 
 namespace fw
 {
+	/*
+	* filepathに指定したファイルを削除する
+	*/
 	bool delfile(const char * filepath)
 	{
 		return remove(filepath) == 0;
@@ -59,16 +62,15 @@ namespace fw
 	const char * Binfile::as_string()
 	{
 		open_if_need(readingmode);
-		const char * pszStr = reinterpret_cast<const char *>(content_.head() + position());
-		move(strlen(pszStr) + 1);
-		return pszStr;
+		const char * text = reinterpret_cast<const char *>(content_.head() + position());
+		move(strlen(text) + 1);
+		return text;
 	}
 
 	const char * Binfile::head()
 	{
 		open_if_need(readingmode);
-		const char * pszHead = reinterpret_cast<const char *>(content_.head());
-		return pszHead;
+		return reinterpret_cast<const char *>(content_.head());
 	}
 	uint Binfile::byte() const
 	{

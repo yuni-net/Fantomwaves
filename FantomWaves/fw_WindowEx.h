@@ -10,7 +10,10 @@ namespace fw
 
 	const uint min_ID = 100;
 
-	class newwin
+	/***
+	@brief [Windows限定]ウィンドウの作成・管理を司る。
+	*/
+	class WindowEx
 	{
 		static std::map<uint, bool> buttons;
 		static uint child_ID;
@@ -93,17 +96,17 @@ namespace fw
 					x, y,
 					width, height,
 					windle,
-					newwin::get_child_ID(),
+					WindowEx::get_child_ID(),
 					GetModuleHandle(NULL),
 					NULL
 					);
 
 				return *this;
 			}
-			checkbox & create(const newwin & w, const std::string & str, int x, int y, int width, int height){
+			checkbox & create(const WindowEx & w, const std::string & str, int x, int y, int width, int height){
 				return create(w.handle(), str, x, y, width, height);
 			}
-			checkbox(const newwin & w, const std::string & str, int x, int y, int width, int height){ create(w, str, x, y, width, height); }
+			checkbox(const WindowEx & w, const std::string & str, int x, int y, int width, int height){ create(w, str, x, y, width, height); }
 
 			void check(){ SendMessage(handle, BM_SETCHECK, BST_CHECKED, 0); }
 			void uncheck(){ SendMessage(handle, BM_SETCHECK, BST_UNCHECKED, 0); }
@@ -132,17 +135,17 @@ namespace fw
 					x, y,
 					width, height,
 					windle,
-					newwin::get_child_ID(),
+					WindowEx::get_child_ID(),
 					GetModuleHandle(NULL),
 					NULL
 					);
 
 				return *this;
 			}
-			input & create(const newwin & w, const std::string & str, int x, int y, int width, int height){
+			input & create(const WindowEx & w, const std::string & str, int x, int y, int width, int height){
 				return create(w.handle(), str, x, y, width, height);
 			}
-			input(const newwin & w, const std::string & str, int x, int y, int width, int height){ create(w, str, x, y, width, height); }
+			input(const WindowEx & w, const std::string & str, int x, int y, int width, int height){ create(w, str, x, y, width, height); }
 
 			std::string gets(){
 				char content[257];
@@ -178,17 +181,17 @@ namespace fw
 					x, y,
 					width, height,
 					windle,
-					newwin::get_child_ID(),
+					WindowEx::get_child_ID(),
 					GetModuleHandle(NULL),
 					NULL
 					);
 
 				return *this;
 			}
-			text & create(const newwin & w, const std::string & str, int x, int y, int width, int height){
+			text & create(const WindowEx & w, const std::string & str, int x, int y, int width, int height){
 				return create(w.handle(), str, x, y, width, height);
 			}
-			text(const newwin & w, const std::string & str, int x, int y, int width, int height){ create(w, str, x, y, width, height); }
+			text(const WindowEx & w, const std::string & str, int x, int y, int width, int height){ create(w, str, x, y, width, height); }
 
 			std::string gets(){
 				char content[257];
@@ -215,18 +218,18 @@ namespace fw
 		public:
 
 			button(){ handle = NULL; }
-			button & create(const newwin & w, const std::string & str, int x, int y, int width, int height, bool defbutton = false){
+			button & create(const WindowEx & w, const std::string & str, int x, int y, int width, int height, bool defbutton = false){
 				if (handle != NULL) del();
 
 				int attribute = WS_CHILD | WS_VISIBLE;
 				if (defbutton) attribute = attribute | BS_DEFPUSHBUTTON;
 				else attribute = attribute | BS_PUSHBUTTON;
 
-				HMENU id = newwin::get_child_ID();
+				HMENU id = WindowEx::get_child_ID();
 				index = reinterpret_cast<uint>(id);
 				index -= 100;
 
-				newwin::init_index(index);
+				WindowEx::init_index(index);
 
 				handle = CreateWindow(
 					"BUTTON",
@@ -242,9 +245,9 @@ namespace fw
 
 				return *this;
 			}
-			button(const newwin & w, const std::string & str, int x, int y, int width, int height, bool defbutton = false){ create(w, str, x, y, width, height, defbutton); }
+			button(const WindowEx & w, const std::string & str, int x, int y, int width, int height, bool defbutton = false){ create(w, str, x, y, width, height, defbutton); }
 
-			bool clicked() const { return newwin::clicked(index); }
+			bool clicked() const { return WindowEx::clicked(index); }
 
 			button & del(){
 				DestroyWindow(handle);
@@ -253,7 +256,7 @@ namespace fw
 			~button(){ del(); }
 		};
 
-		newwin(){}
+		WindowEx(){}
 		void init(const std::string &title, int width = CW_USEDEFAULT, int height = CW_USEDEFAULT){
 			wc.cbClsExtra = 0;
 			wc.cbSize = sizeof(WNDCLASSEX);
@@ -283,16 +286,16 @@ namespace fw
 			ShowWindow(main_winhand, SW_SHOWDEFAULT);
 			UpdateWindow(main_winhand);
 		}
-		newwin(const std::string &title, int width = CW_USEDEFAULT, int height = CW_USEDEFAULT){ init(title, width, height); }
+		WindowEx(const std::string &title, int width = CW_USEDEFAULT, int height = CW_USEDEFAULT){ init(title, width, height); }
 
 		HWND handle() const { return main_winhand; }
 
-		newwin & del(){
+		WindowEx & del(){
 			for (uint i = min_ID; i < child_ID; ++i) DestroyWindow(reinterpret_cast<HWND>(i));
 			DestroyWindow(main_winhand);
 			return *this;
 		}
-		~newwin(){ del(); }
+		~WindowEx(){ del(); }
 	};
 
 }

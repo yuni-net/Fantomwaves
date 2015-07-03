@@ -6,8 +6,10 @@
 
 namespace fw
 {
-
-	// 最後の\は不要
+	// Windows限定。
+	// 新規ディレクトリを作成する。
+	// 最後の\は不要。
+	// @return true...成功　false...失敗
 	bool newdire(const std::string & path);
 
 }

@@ -38,9 +38,6 @@
     <Filter Include="FantomWaves\path">
       <UniqueIdentifier>{66d97b80-51b2-489d-a98f-c7bb2954b227}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FantomWaves\newwin">
-      <UniqueIdentifier>{06efe7c8-7fe8-4d64-ba0c-c50233fe94b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FantomWaves\newshortcut">
       <UniqueIdentifier>{159f3af4-e04d-4abe-b8de-0b42945c7a47}</UniqueIdentifier>
     </Filter>
@@ -49,6 +46,9 @@
     </Filter>
     <Filter Include="FantomWaves\Binfile">
       <UniqueIdentifier>{35f4b346-4c88-4665-b5b2-6cccb58ae252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\WindowEx">
+      <UniqueIdentifier>{06efe7c8-7fe8-4d64-ba0c-c50233fe94b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp">
       <Filter>FantomWaves\newshortcut</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\newwin.cpp">
-      <Filter>FantomWaves\newwin</Filter>
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\path.cpp">
       <Filter>FantomWaves\path</Filter>
@@ -97,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp">
       <Filter>FantomWaves\xy2radian</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp">
+      <Filter>FantomWaves\WindowEx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +175,6 @@
     <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h">
       <Filter>FantomWaves\newshortcut</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_newwin.h">
-      <Filter>FantomWaves\newwin</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_path.h">
       <Filter>FantomWaves\path</Filter>
     </ClInclude>
@@ -201,6 +198,9 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_Wav.h">
       <Filter>FantomWaves\wav</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h">
+      <Filter>FantomWaves\WindowEx</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

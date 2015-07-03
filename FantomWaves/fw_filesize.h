@@ -6,6 +6,9 @@
 
 namespace fw{
 
+	/*
+	 * filepathに指定したファイルのサイズ(バイト数)を返します
+	 */
 	uint filesize(const std::string & filepath);
 
 }

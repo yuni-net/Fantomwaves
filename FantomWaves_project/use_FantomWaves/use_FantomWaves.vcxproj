@@ -90,7 +90,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\newwin.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp" />
@@ -119,7 +119,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_includes.h" />
     <ClInclude Include="..\..\FantomWaves\fw_newdire.h" />
     <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h" />
-    <ClInclude Include="..\..\FantomWaves\fw_newwin.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h" />
     <ClInclude Include="..\..\FantomWaves\fw_nullice.h" />
     <ClInclude Include="..\..\FantomWaves\fw_path.h" />
     <ClInclude Include="..\..\FantomWaves\fw_popup.h" />

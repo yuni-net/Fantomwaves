@@ -2,6 +2,10 @@
 
 namespace fw
 {
+	// Windows限定。
+	// 新規ディレクトリを作成する。
+	// 最後の\は不要。
+	// @return true...成功　false...失敗
 	bool newdire(const std::string & path)
 	{
 		BOOL result = MakeSureDirectoryPathExists(fw::cnct() << path << "\\");

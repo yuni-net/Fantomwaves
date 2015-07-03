@@ -2,6 +2,13 @@
 
 namespace fw
 {
+	/***
+	@brief [Windows限定]新しいショートカットを作成します。
+	@param
+	lnkpath: 作成するショートカットのパス
+	reqpath: ショートカット先のパス
+	@return true...成功　false...失敗
+	*/
 	bool newshortcut(const std::string & lnkpath, const std::string & reqpath)
 	{
 		bool result = false;
@@ -24,17 +31,17 @@ namespace fw
 				if (SUCCEEDED(did_set_path))
 				{
 #ifdef UNICODE
-					hResult = ppf->Save(lnkpath.c_str(), TRUE);
-					if (SUCCEEDED(hResult))
+					HRESULT did_save = ppf->Save(lnkpath.c_str(), TRUE);
+					if (SUCCEEDED(did_save))
 					{
 						result = true;
 					}
 #else
-					WCHAR wszShortcutFile[MAX_PATH];
-					if (MultiByteToWideChar(CP_ACP, 0, lnkpath.c_str(), -1, wszShortcutFile, MAX_PATH) > 0)
+					WCHAR shortcut_file_path[MAX_PATH];
+					if (MultiByteToWideChar(CP_ACP, 0, lnkpath.c_str(), -1, shortcut_file_path, MAX_PATH) > 0)
 					{
 						//ショートカットファイルの保存
-						HRESULT did_save = ppf->Save(wszShortcutFile, TRUE);
+						HRESULT did_save = ppf->Save(shortcut_file_path, TRUE);
 						if (SUCCEEDED(did_save))
 						{
 							result = true;
