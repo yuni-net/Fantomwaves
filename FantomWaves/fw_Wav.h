@@ -7,15 +7,43 @@
 
 namespace fw
 {
-
+	/***
+	wavファイルを取り扱うクラスです。
+	*/
 	class Wav
 	{
 	public:
+		/***
+		@brief wavファイルを読み込みます。
+		@param wavファイルのパスを指定します。
+		*/
+		bool load(const char * path);
+		bool load(const std::string & path){ return load(path.c_str() ); }
+
+		/***
+		@brief wavファイルの音楽データ部分を取得します。
+		*/
 		void * data(){ return data_; }
 		const void * data() const { return data_; }
+
+		/***
+		@brief 音楽データ部分のサイズ(バイト数)を取得します。
+		*/
 		DWORD size() const { return size_; }
+
+		/***
+		@brief チャンネル数を取得します。
+		*/
 		int channels(){ return channels_; }
+
+		/***
+		@brief ビット数を取得します。
+		*/
 		int bit(){ return bit_; }
+
+		/***
+		@brief Hz数を取得します。
+		*/
 		int Hz(){ return myHz; }
 
 		WORD format_tag(){ return pwf.format_tag; }
@@ -26,8 +54,6 @@ namespace fw
 		WORD pwf_size(){ return 0; }
 
 
-		bool load(const char * path);
-		bool load(const std::string & path){ return load(path.c_str() ); }
 
 
 

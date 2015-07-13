@@ -6,8 +6,11 @@
 
 namespace fw
 {
-
-	class window
+	/***
+	ウィンドウを管理するクラス。
+	古い実装。
+	*/
+	class Window
 	{
 	private:
 		class Exstyle
@@ -44,6 +47,7 @@ namespace fw
 
 				DWORD output() const { return style; }
 		};
+
 		class Style
 		{
 		private:
@@ -84,7 +88,7 @@ namespace fw
 		Exstyle exstyle;
 		Style style;
 
-		window(bool CreateFlag = false)
+		Window(bool CreateFlag = false)
 		{
 			ClientSizeMode = true;
 			VisibleFlag = true;
@@ -97,7 +101,7 @@ namespace fw
 
 			if (CreateFlag) create();
 		}
-		window(const std::string & title, WNDPROC winproc, int width, int height, bool CreateFlag = false)
+		Window(const std::string & title, WNDPROC winproc, int width, int height, bool CreateFlag = false)
 		{
 			VisibleFlag = true;
 			Title = title;
@@ -110,7 +114,7 @@ namespace fw
 			if (CreateFlag) create();
 		}
 
-		window & invisible()
+		Window & invisible()
 		{
 			style.invisible();
 			VisibleFlag = false;
@@ -118,18 +122,18 @@ namespace fw
 			return *this;
 		}
 
-		window & ClientSize()
+		Window & ClientSize()
 		{
 			ClientSizeMode = true;
 			return *this;
 		}
-		window & WindowSize()
+		Window & WindowSize()
 		{
 			ClientSizeMode = false;
 			return *this;
 		}
 
-		window & create()
+		Window & create()
 		{
 			wc.cbClsExtra = 0;
 			wc.cbSize = sizeof(WNDCLASSEX);
@@ -186,41 +190,41 @@ namespace fw
 		}
 
 		int x() const { return X; }
-		window & x(const int x)
+		Window & x(const int x)
 		{
 			X = x;
 			return *this;
 		}
 
 		int y() const { return Y; }
-		window & y(const int y)
+		Window & y(const int y)
 		{
 			Y = y;
 			return *this;
 		}
 
 		const std::string & title() const { return Title; }
-		window & title(const std::string & title)
+		Window & title(const std::string & title)
 		{
 			Title = title;
 			return *this;
 		}
 
 		int width() const { return Width; }
-		window & width(const int width)
+		Window & width(const int width)
 		{
 			Width = width;
 			return *this;
 		}
 
 		int height() const { return Height; }
-		window & height(const int height)
+		Window & height(const int height)
 		{
 			Height = height;
 			return *this;
 		}
 
-		window & winproc(WNDPROC winproc)
+		Window & winproc(WNDPROC winproc)
 		{
 			Winproc = winproc;
 			return *this;

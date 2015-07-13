@@ -7,7 +7,9 @@
 
 namespace fw
 {
-
+	/***
+	実行ファイルを実行するためのクラス
+	*/
 	class Exeexe
 	{
 	public:
@@ -138,7 +140,7 @@ namespace fw
 		bool succeeded;
 		std::string exe_path;
 		std::string argus_;
-		fw::thread mythread;
+		fw::Thread mythread;
 
 		static fw_thread_ get_message_system(void * param)
 		{

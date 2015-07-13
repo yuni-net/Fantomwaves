@@ -3,12 +3,14 @@
 
 namespace fw
 {
-
-	class nullice :public vstring
+	/***
+	ƒkƒ‹•¶š‚Å‹æØ‚ç‚ê‚½•¡”‚Ì•¶š—ñ‚ğ•ª‰ğ‚µ‚ÄŒÂ•Ê‚É•Û‚·‚éƒNƒ‰ƒXB
+	*/
+	class Nullice :public vstring
 	{
 	public:
 		// *** Use this function ONLY WHEN the end data is '\0' ***
-		nullice & slice_(const char * str, uint byte)	// "byte" means the length of the data
+		Nullice & slice_(const char * str, uint byte)	// "byte" means the length of the data
 		{
 			uint head = 0;
 			while(head < byte)
@@ -20,7 +22,7 @@ namespace fw
 			return *this;
 		}
 
-		nullice & slice(const char * str, uint byte)	// "byte" means the length of the data
+		Nullice & slice(const char * str, uint byte)	// "byte" means the length of the data
 		{
 			if(byte==0) return *this;
 			if(str[byte-1] != 0)

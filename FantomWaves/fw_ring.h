@@ -2,8 +2,10 @@
 
 namespace fw
 {
-
-	class ring
+	/***
+	循環数を取り扱う型です。
+	*/
+	class Ring
 	{
 		int count;
 		int beg;
@@ -11,7 +13,7 @@ namespace fw
 
 	public:
 
-		ring & subs(int num){
+		Ring & subs(int num){
 			int equally = num - beg;
 			int minenum = equally%(end - beg + 1);
 			int plusnum = minenum + (end - beg + 1);
@@ -20,66 +22,66 @@ namespace fw
 
 			return *this;
 		}
-		ring & operator= (int num){ return subs(num); }
+		Ring & operator= (int num){ return subs(num); }
 
 		operator int () const { return num(); }
 		operator const int* () const { return &count; }
 		operator const int& () const { return count; }
 
-		ring & set(int beg, int end){
+		Ring & set(int beg, int end){
 			int oldcount = count;
 			this->beg = beg;
 			this->end = end;
 			subs(oldcount);
 			return *this;
 		}
-		ring & set(int end){ return set(0, end); }
+		Ring & set(int end){ return set(0, end); }
 
-		ring & init(){
+		Ring & init(){
 			count = beg;
 			return *this;
 		}
-		ring & init(int beg, int end){
+		Ring & init(int beg, int end){
 			set(beg, end);
 			return init();
 		}
-		ring & init(int end){ return init(0, end); }
+		Ring & init(int end){ return init(0, end); }
 
-		ring(){}
-		ring(int end){ init(end); }
-		ring(int beg, int end){ init(beg, end); }
+		Ring(){}
+		Ring(int end){ init(end); }
+		Ring(int beg, int end){ init(beg, end); }
 
 
-		ring & operator+= (int num){
+		Ring & operator+= (int num){
 			subs(count + num);
 			return *this;
 		}
 
-		ring & operator-= (int num){
+		Ring & operator-= (int num){
 			*this += -num;
 			return *this;
 		}
 
 		//前置きインクリメント
-		ring & operator++(){
+		Ring & operator++(){
 			*this += 1;
 			return *this;
 		}
 		//後置きインクリメント
-		ring operator++(int){
-			ring answer = *this;
+		Ring operator++(int){
+			Ring answer = *this;
 			*this += 1;
 			return answer;
 		}
 
 		//前置きデクリメント
-		ring & operator--(){
+		Ring & operator--(){
 			*this -= 1;
 			return *this;
 		}
 		//後置きデクリメント
-		ring operator--(int){
-			ring answer = *this;
+		Ring operator--(int){
+			Ring answer = *this;
 			*this -= 1;
 			return answer;
 		}

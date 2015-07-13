@@ -2,7 +2,9 @@
 
 namespace fw
 {
-
+	/***
+	Win32APIの拡張エラー情報を取得するためのクラス。
+	*/
 	class ExError
 	{
 	public:

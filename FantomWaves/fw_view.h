@@ -10,10 +10,13 @@ namespace fw
 
 	const uint childnum = 24;
 
+	/***
+	別ウィンドウに文字列を何列か表示するためのクラスです。
+	*/
 	class ForView
 	{
 		WindowEx w;
-		WindowEx::text children[childnum];
+		WindowEx::TextField children[childnum];
 		uint next;
 
 	public:
@@ -25,16 +28,33 @@ namespace fw
 			next = 0;
 		}
 
+		/***
+		@brief 表示内容を全てクリアします。
+		*/
 		void clear(){
 			for (uint i = 0; i < childnum; ++i) children[i].sets("");
 			next = 0;
 		}
+
+		/***
+		@brief 一段下に、文字列を追加します。
+		*/
 		void add(const std::string & str){ if (next < childnum) children[next++].sets(str); }
+		
+		/***
+		index番目の段の文字列を変更します。
+		*/
 		void set(const std::string & str, uint index){ if (next < childnum) children[index].sets(str); }
 
+		/***
+		文字列を表示するウィンドウを消します。
+		*/
 		void del(){ w.del(); }
 	};
 
+	/***
+	ForViewクラスの唯一のインスタンスを返します。
+	*/
 	ForView & view();
 
 }

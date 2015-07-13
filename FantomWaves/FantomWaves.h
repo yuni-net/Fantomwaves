@@ -3,8 +3,8 @@
  *
  * this library contains utility class and function and etc...
  *
- * Version: 0.3.2
- * FinalUpdate: 23th Feb 2015
+ * Version: 2.0.0
+ * FinalUpdate: 14th Jul 2015
  * Author: yuni.net.liberty
  *
  */
