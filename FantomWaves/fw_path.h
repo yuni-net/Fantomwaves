@@ -8,41 +8,144 @@
 
 namespace fw
 {
+	/***
+	@brief ファイルが存在するかどうか判定します。
+	@param ここに指定したパスが存在し、かつファイルであるかどうか判定します。
+	@return true...It's a file. false...It's a NOT file.
+	*/
+	bool iffile(const std::string & path);
+	bool iffile(const vstring & path);
 
+	/***
+	@brief ディレクトリが存在するかどうか判定します。
+	@param ここに指定したパスが存在し、かつディレクトリであるかどうか判定します。
+	@return true...It's a directory. false...It's a NOT directory.
+	*/
+	bool ifdire(const std::string & path);
+	bool ifdire(const vstring & path);
 
+	/***
+	@brief ルートパスを得るとき便利です。
+	@param ここに指定したファイル・ディレクトリのパスへのルートパスを得ます。
+	@detail パスの最後には / が付きます。
+	        例1) C:/root/text.txt -> C:/root/
+			例2) C:/root/directory -> C:/root/
+			\ を使った表記は使えません。
+	@return ルートパス
+	*/
+	std::string root(const std::string & path);
+	vstring root(const vstring & path);
 
-
-	bool iffile(const std::string & Path);
-	bool iffile(const vstring & Path);
-	bool ifdire(const std::string & Path);
-	bool ifdire(const vstring & Path);
-	std::string root(const std::string & Path);	// C:/root/text.txt -> C:/root/
-	vstring root(const vstring & Path);
-	std::string rootdire(const std::string & Path);	// C:/rootdire/text.txt -> C:/rootdire
+	/***
+	@brief ルートディレクトリを得るとき便利です。
+	@param ここに指定したファイル・ディレクトリのルートディレクトリを得ます。
+	@detail パスの最後に / は付きません。
+		例1) C:/root/text.txt -> C:/root
+		例2) C:/root/directory -> C:/root
+		\ を使った表記は使えません。
+	@return ルートディレクトリ
+	*/
+	std::string rootdire(const std::string & path);
 	vstring rootdire(const vstring & Path);
+
+	/***
+	@brief ファイルの拡張子を得ます。
+	@detail ドット付きです。
+	        例) file.txt -> .txt
+	@param ここに指定したファイルの拡張子を得ます。
+	@return 拡張子
+	*/
 	std::string extend(const std::string & filepath);	// file.txt -> .txt
 	vstring extend(const vstring & filepath);
+
+	/***
+	@brief ファイルの拡張子を得ます。
+	@detail ドットは付きません。
+		例) file.txt -> txt
+	@param ここに指定したファイルの拡張子を得ます。
+	@return 拡張子
+	*/
 	std::string onlyextend(const std::string & filepath);	// file.txt -> txt
 	vstring onlyextend(const vstring & filepath);
-	std::string filename(const std::string & Path);	// C:/file.txt -> file.txt
-	std::string onlyname(const std::string & Path);	// C:/file.txt -> file, C:/dire -> dire
-	vstring onlyname(const vstring & Path);
-	vstring onlyfile(const vstring & Path);
-	vstring onlydire(const vstring & Path);
-	std::string chextend(const std::string & filepath, const std::string & extend);
-	vstring chextend(const vstring & filepath, const std::string & extend);
+
+	/***
+	@brief ファイル名を得ます。
+	@detail 拡張子付きです。
+	        例) C:/file.txt -> file.txt
+	@param ここに指定したファイルの名前を得ます。
+	@return ファイル名
+	*/
+	std::string filename(const std::string & path);
+
+	/***
+	@brief ファイル名やディレクトリ名を得ます。
+	@detail ファイル名の場合、拡張子は付きません。
+		例1) C:/file.txt -> file
+		例2) C:/dire -> dire
+	@param ここに指定したパスの名前を得ます。
+	@return パス
+	*/
+	std::string onlyname(const std::string & path);
+	vstring onlyname(const vstring & path);
+
+	/***
+	@brief パスの配列を渡すと、その中でファイルへのパスだけを集めた配列を返します。
+	@param パスの配列
+	@return ファイルパスの配列
+	*/
+	vstring onlyfile(const vstring & path);
+
+	/***
+	@brief パスの配列を渡すと、その中でディレクトリのパスだけを集めた配列を返します。
+	@param パスの配列
+	@return ディレクトリパスの配列
+	*/
+	vstring onlydire(const vstring & path);
+
+	/***
+	@brief 拡張子の部分を変更します。
+	@param
+		filepath: 変更前のファイルパスを指定します。
+		extend: 変更後の拡張子を指定します。ドットは付けてはいけません。
+	@return 拡張子が変更された後のファイルパス
+	*/
+	std::string changextend(const std::string & filepath, const std::string & extend);
+	vstring changextend(const vstring & filepath, const std::string & extend);
+
+	/***
+	@brief 拡張子が同じかどうか判定します。
+	@param
+		one: 判定したいパスの一つ
+		ano: 判定したいパスのもう一つ
+	@return true...同じ false...違う
+	*/
 	bool samextend(const std::string & one, const std::string & ano);
-	bool checkextend(const std::string & extend, const std::string & Path);
+
+	/***
+	@brief 拡張子が特定の物かどうかチェックする。
+	@param
+		extend: 特定の拡張子
+		path: ここに指定したパスの拡張子がextendと同じかどうかをチェックします。
+	@return true...同じ false...違う
+	*/
+	bool checkextend(const std::string & extend, const std::string & path);
 
 
 
 	/*
-	deepのときワイルドカードを設定してしまうとフォルダ探索ができなくなってしまう
+	memo: deepのときワイルドカードを設定してしまうとフォルダ探索ができなくなってしまう
 	*/
 
+	/***
+	ファイル・ディレクトリの検索を行うためのクラスです。
+	メソッドチェーンによって各種設定を決定した後検索を行うというインターフェイスになっています。
+	*/
 	class Path
 	{
 	private:
+		/***
+		探索の深さ(指定したディレクトリ直下だけなのか以下全部なのか)を指定するときに渡す型です。
+		*/
 		class Depth
 		{
 		public:
@@ -67,6 +170,10 @@ namespace fw
 			enum Mode{ shallow_mode, deep_mode };
 			Mode mode;
 		};
+
+		/***
+		探索するパスの種類(ファイルだけ・ディレクトリだけ・ファイルとディレクトリ)を指定するときに渡す型です。
+		*/
 		class Attribute
 		{
 		public:
@@ -120,6 +227,9 @@ namespace fw
 			init();
 		}
 
+		/***
+		@brief 探索するディレクトリを指定します。
+		*/
 		Path & directory(const vstring & direpath){
 			dire_path_ = direpath;
 			return init();
@@ -129,6 +239,9 @@ namespace fw
 			return init();
 		}
 
+		/***
+		@brief 探索したいディレクトリを指定します。
+		*/
 		Path(const vstring & direpath)
 			:
 			any("*"), none(""),
@@ -145,22 +258,39 @@ namespace fw
 		}
 #pragma warning(pop)
 
+		/***
+		@brief 探索結果を格納するストリング配列を指定します。
+		*/
 		Path & target(vstring & target){
 			this->target_ = &target;
 			return *this;
 		}
 		Path & deftarget(){ return this->target(this->mytarget); }
+
+		/***
+		@brief 探索したいパスを、ワイルドカードを使って指定します。
+		@detail extentionと同時に指定することはできません。
+		*/
 		Path & wildcard(const std::string & wild){
 			this->wild_ = &wild;
 			return *this;
 		}
+
+		/***
+		@brief 探索したいパスを、拡張子を使って指定します。
+		@detail wildcardと同時に指定することはできません。
+		*/
 		Path & extention(const std::string & ext){
 			this->extens_ = &ext;
 			return *this;
 		}
+
 		Depth & depth(){ return mydepth; }
 		Attribute & attribute(){ return myattribute; }
 
+		/***
+		@brief 探索を実行します。
+		*/
 		uint exe(){
 			for (uint i = 0; i < dire_path_.size(); i++){
 				dispose(dire_path_[i]);
@@ -168,10 +298,18 @@ namespace fw
 
 			return target_->size();
 		}
+
+		/***
+		@brief 探索を実行し、その結果を返します。
+		*/
 		vstring & get(){
 			exe();
 			return *target_;
 		}
+
+		/***
+		@brief 探索結果を返します。
+		*/
 		vstring & got(){ return *target_; }
 
 	private:
@@ -186,6 +324,9 @@ namespace fw
 		const std::string any;
 		const std::string none;
 
+		/***
+		@brief 再帰的に探索を行います。
+		*/
 		void dispose(const std::string & direpath){
 			vstring & target = *(this->target_);
 			const std::string & wild = *(this->wild_);

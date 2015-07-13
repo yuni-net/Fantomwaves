@@ -119,16 +119,16 @@ namespace fw
 		return send;
 	}
 
-	std::string chextend(const std::string & filepath, const std::string & extend)
+	std::string changextend(const std::string & filepath, const std::string & extend)
 	{
 		uint num = filepath.find_last_of('.');
 		std::string bef = filepath.substr(0, num);
 		return fw::cnct() << bef < extend;
 	}
-	vstring chextend(const vstring & filepath, const std::string & extend)
+	vstring changextend(const vstring & filepath, const std::string & extend)
 	{
 		vstring send;
-		for (uint i = 0; i < filepath.size(); ++i) send += chextend(filepath[i], extend);
+		for (uint i = 0; i < filepath.size(); ++i) send += changextend(filepath[i], extend);
 		return send;
 	}
 

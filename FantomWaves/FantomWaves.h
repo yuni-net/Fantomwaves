@@ -92,7 +92,7 @@
 #include "fw_cast.h"
 #include "fw_cnct.h"
 #include "fw_popup.h"
-#include "fw_newwin.h"
+#include "fw_WindowEx.h"
 #include "fw_window.h"
 #include "fw_view.h"
 #include "fw_trade.h"

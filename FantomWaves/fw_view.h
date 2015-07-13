@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "fw_newwin.h"
+#include "fw_WindowEx.h"
 #include "fw_typedef.h"
 
 namespace fw
@@ -12,8 +12,8 @@ namespace fw
 
 	class ForView
 	{
-		::fw::newwin w;
-		newwin::text children[childnum];
+		WindowEx w;
+		WindowEx::text children[childnum];
 		uint next;
 
 	public:
