@@ -100,7 +100,7 @@
 #include "fw_vtypedef.h"
 
 #ifdef FW_TYPEDEF_
-#include "publicdef.h"
+#include "fw_publicdef.h"
 #endif
 
 #include "fw_newshortcut.h"
