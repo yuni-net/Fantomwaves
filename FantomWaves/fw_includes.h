@@ -38,3 +38,5 @@
 #include <stdlib.h>
 #include <time.h>
 #include <process.h>
+#include <WinSock2.h>
+#pragma comment(lib, "ws2_32")

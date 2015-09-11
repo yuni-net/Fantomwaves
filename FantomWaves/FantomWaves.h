@@ -120,6 +120,7 @@
 #include "fw_wav.h"
 #include "fw_xrandom.h"
 #include "fw_xy2radian.h"
+#include "fw_NetWork.h"
 
 #ifndef FantomWaves_developing_
 	#ifdef _DEBUG
