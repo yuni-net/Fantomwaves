@@ -88,8 +88,10 @@
     <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
@@ -117,6 +119,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_exerror.h" />
     <ClInclude Include="..\..\FantomWaves\fw_filesize.h" />
     <ClInclude Include="..\..\FantomWaves\fw_includes.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h" />
     <ClInclude Include="..\..\FantomWaves\fw_newdire.h" />
     <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h" />
     <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h" />
@@ -136,6 +139,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_xrandom.h" />
     <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_UDP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

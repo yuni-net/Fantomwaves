@@ -50,6 +50,12 @@
     <Filter Include="FantomWaves\WindowEx">
       <UniqueIdentifier>{06efe7c8-7fe8-4d64-ba0c-c50233fe94b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\NetWork">
+      <UniqueIdentifier>{49815cbe-ed30-4f11-a96f-30d20414d130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP">
+      <UniqueIdentifier>{427c0113-2104-4e8e-b2a3-6092cc0ee9ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -97,6 +103,12 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp">
       <Filter>FantomWaves\WindowEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP.cpp">
+      <Filter>FantomWaves\NetWork\UDP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +213,12 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h">
       <Filter>FantomWaves\WindowEx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_UDP.h">
+      <Filter>FantomWaves\NetWork\UDP</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
