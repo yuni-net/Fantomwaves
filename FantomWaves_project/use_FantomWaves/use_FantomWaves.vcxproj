@@ -91,7 +91,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
@@ -139,7 +139,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_xrandom.h" />
     <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
-    <ClInclude Include="..\..\FantomWaves\fw_UDP.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
