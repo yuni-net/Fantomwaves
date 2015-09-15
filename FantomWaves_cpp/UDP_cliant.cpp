@@ -240,10 +240,7 @@ namespace fw
 			net.addr.sin_addr.S_un.S_addr = their_addr.sin_addr.S_un.S_addr;
 		//	net.server_IP.set(inet_ntoa(net.addr.sin_addr));
 			net.did_connect_server_ = true;
-			return 0;
 		}
-
-		return 0;
 	}
 
 }

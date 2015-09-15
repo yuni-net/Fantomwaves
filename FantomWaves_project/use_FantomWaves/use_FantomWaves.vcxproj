@@ -88,6 +88,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
     <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_IP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
