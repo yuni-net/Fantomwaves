@@ -42,20 +42,19 @@ namespace fw
 
 		/**
 		 @return
-		      true: 受信したデータがあり、まだ取り出されていない状態である。
-			  false: 受信したデータは無い。
+		      true: まだ取り出されていないデータがある。
+			  false: 全てのデータは既に取り出されている。
 		 */
-		bool did_receive() const;
+		bool are_there_any_left_datas() const;
 
 		/**
-		 @return まだ取り出されていない受信データの数が返る。
+		 @brief 未取り出しの受信データから最も古いものを取り出す。
+		 @param 取り出したデータを格納するBindata型変数を指定する。
+		 @return
+		      true: データを取り出した。
+			  false: データを取り出さなかった。(未取り出しデータが無かった)
 		 */
-		unsigned int num_received_datas() const;
-
-		/**
-		 @return 未取り出しの受信データから最も古いものを取り出して返す。
-		 */
-		Bindata pop_received_data();
+		bool pop_received_data(Bindata & buffer);
 
 		/**
 		 @brief サーバーにデータを送信する。
@@ -66,7 +65,7 @@ namespace fw
 		/**
 		 @return サーバーのIPアドレスを返す。
 		 */
-		const IP & get_server_IP() const;
+	//	const IP & get_server_IP() const;
 
 		/**
 		 @return サーバーのポート番号を返す。
@@ -92,13 +91,11 @@ namespace fw
 			}
 			else
 			{
-				if (net.did_receive())
+				while (net.are_there_any_left_datas())
 				{
-					for (fw::uint i = 0; i < net.num_received_messages(); ++i)
-					{
-						fw::Bindata data = net.received_message();
-						process(data);
-					}
+					fw::Bindata data;
+					net.pop_received_data(data);
+					process(data);
 				}
 
 				net.send(data);
@@ -113,26 +110,27 @@ namespace fw
 		bool did_create_socket;
 		SOCKET sock;
 		unsigned short port;
-		IP server_IP;
+	//	IP server_IP;
 		int limit_time;
 		sockaddr_in addr;
 		Bindata server_response;
-		fw::Thread thread_;
 		bool did_timeout_;
 		bool did_connect_server_;
-		RingQue<Bindata> received_datas;
 
 
-
-		void set_addr_for_broadcast();
 
 		/**
+		 @brief 受信したデータに関する情報を取得する。
+		 @param
+		      their_addr: 送信者のアドレス情報を格納する変数をここに指定します。
+			  data_bytes: 受信したデータのバイト数を格納する変数をここに指定します。
 		 @return
-		     true: succeeded
-			 false: failed
+		      true: 正常に情報を取得した。(データが取り出せる状態である)
+			  false: 情報の取得に失敗した。(データを取り出せる状態ではなく、引数に指定した変数の値は無効である)
 		 */
-		bool send_data(const Bindata & data);
+		bool get_received_info(sockaddr_in & their_addr, int & data_bytes) const;
 
-		static fw_thread_ find_server(void * param);
+		void set_addr_for_broadcast();
+		static void find_server(void * param);
 	};
 }

@@ -15,7 +15,6 @@ namespace fw
 		this->port = port;
 		this->limit_time = limit_time;
 		this->server_response = server_response;
-		received_datas.set_size(20);
 
 		NetWork::init_ifneed();
 		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -24,11 +23,11 @@ namespace fw
 		setsockopt(sock, SOL_SOCKET, SO_BROADCAST, reinterpret_cast<const char *>(&perm), sizeof(int));
 
 		set_addr_for_broadcast();
-		send_data(data);
+		send(data);
 
 		did_timeout_ = false;
 		did_connect_server_ = false;
-		thread_.begin(find_server, this);
+		newthread(find_server, this);
 	}
 
 	bool UDP_cliant::did_timeout() const
@@ -41,21 +40,89 @@ namespace fw
 		return did_connect_server_;
 	}
 
-	bool UDP_cliant::did_receive() const
+	bool UDP_cliant::are_there_any_left_datas() const
 	{
-		return num_received_datas() > 0;
+		sockaddr_in their_addr;
+		int data_bytes;
+		return get_received_info(their_addr, data_bytes);
 	}
 
-	unsigned int UDP_cliant::num_received_datas() const
+	bool UDP_cliant::get_received_info(sockaddr_in & their_addr, int & data_bytes) const
 	{
-		return received_datas.size();
+		int addr_len = sizeof(sockaddr_in);
+
+		while (true)
+		{
+			fd_set fds;
+			FD_ZERO(&fds);
+			FD_SET(sock, &fds);
+
+			timeval timev;
+			timev.tv_sec = 0;
+			timev.tv_usec = 8;
+
+			const int result = select(0, &fds, NULL, NULL, &timev);
+
+			const int time_is_out = 0;
+			if (result == time_is_out)
+			{
+				return false;
+			}
+
+			const int data_was_NOT_received = 0;
+			if (FD_ISSET(sock, &fds) == data_was_NOT_received)
+			{
+				return false;
+			}
+
+			zeromemory(&their_addr);
+			char damy;
+			data_bytes = recvfrom(
+				sock,
+				&damy,
+				0,
+				MSG_PEEK | MSG_TRUNC,
+				reinterpret_cast<sockaddr *>(&their_addr),
+				&addr_len);
+
+			if (data_bytes <= 0)
+			{
+				continue;
+			}
+
+			if (their_addr.sin_addr.S_un.S_addr != addr.sin_addr.S_un.S_addr)
+			{
+				continue;
+			}
+
+			return true;
+		}
+		return false;
 	}
 
-	Bindata UDP_cliant::pop_received_data()
+	bool UDP_cliant::pop_received_data(Bindata & buffer)
 	{
-		return received_datas.pop();
-	}
+		sockaddr_in their_addr;
+		int data_bytes;
+		const bool can_I_pop = get_received_info(their_addr, data_bytes);
 
+		if (can_I_pop == false)
+		{
+			return false;
+		}
+
+		buffer.set_size(data_bytes);
+
+		const int received_bytes = recvfrom(
+			sock,
+			buffer.access_buffer_pointer(),
+			buffer.byte(),
+			MSG_TRUNC,
+			NULL,
+			NULL);
+
+		return true;
+	}
 
 	bool UDP_cliant::send(const Bindata & data)
 	{
@@ -70,10 +137,12 @@ namespace fw
 		return send_len >= data.byte();
 	}
 
+#if 0
 	const IP & UDP_cliant::get_server_IP() const
 	{
 		return server_IP;
 	}
+#endif
 
 	unsigned short UDP_cliant::get_server_port() const
 	{
@@ -86,7 +155,6 @@ namespace fw
 	UDP_cliant::UDP_cliant()
 	{
 		did_create_socket = false;
-		is_connecting_server_ = true;
 	}
 	UDP_cliant::~UDP_cliant()
 	{
@@ -107,12 +175,9 @@ namespace fw
 	}
 
 
-	fw_thread_ UDP_cliant::find_server(void * param)
+	void UDP_cliant::find_server(void * param)
 	{
 		UDP_cliant & net = *pointer_cast<UDP_cliant *>(param);
-
-		sockaddr_in their_addr;
-		const int addr_len = sizeof(sockaddr_in);
 
 		fd_set fds, readfds;
 		FD_ZERO(&readfds);
@@ -125,48 +190,57 @@ namespace fw
 		while (true)
 		{
 			memcpy(&fds, &readfds, sizeof(fd_set));
-
 			const int result = select(0, &fds, NULL, NULL, &timev);
+
 			const int time_is_out = 0;
 			if (result == time_is_out)
 			{
-				break;
+				net.did_timeout_ = true;
+				return -1;
 			}
 
-			const int NOT_received = 0;
-			if (FD_ISSET(net.sock, &fds) == 0)
+			const int data_was_NOT_received = 0;
+			if (FD_ISSET(net.sock, &fds) == data_was_NOT_received)
 			{
+				Sleep(15);
 				continue;
 			}
 
-			memset(message, 0, 1024);
-			recvfrom(
-				com_sock,
-				message,
-				1024,
-				0,
-				reinterpret_cast<sockaddr *>(&cliant_addr),
+			sockaddr_in their_addr;
+			zeromemory(&their_addr);
+			int addr_len = sizeof(sockaddr_in);
+			Bindata response;
+			response.set_size(net.server_response.bytes());
+
+			const int received_bytes = recvfrom(
+				net.sock,
+				response.access_buffer_pointer(),
+				response.byte(),
+				MSG_TRUNC,
+				reinterpret_cast<sockaddr *>(&their_addr),
 				&addr_len);
 
-			std::cout << "You received a message:" << std::endl;
-			for (int i = 0; i < 48; ++i)
+			if (received_bytes != net.server_response.bytes())
 			{
-				char code_str[256];
-				itoa(message[i], code_str, 10);
-				std::cout << message[i] << " (" << code_str << ")" << std::endl;
-			}
-
-			if (is_the_address_mine(cliant_addr.sin_addr.S_un.S_addr))
-			{
-				// 自分自身からのメッセージは無視する
-				std::cout << "It's from my self." << std::endl;
+				// データサイズが想定外ということはサーバーから送られてきたデータではない
 				continue;
 			}
 
-			if (process_message(message, cliant_addr))
+			if (NetWork::is_my_address(their_addr.sin_addr.S_un.S_addr))
 			{
-				return 1;
+				// 自分自身からのメッセージは無視する
+				continue;
 			}
+
+			if (response != net.server_response)
+			{
+				continue;
+			}
+
+			net.addr.sin_addr.S_un.S_addr = their_addr.sin_addr.S_un.S_addr;
+		//	net.server_IP.set(inet_ntoa(net.addr.sin_addr));
+			net.did_connect_server_ = true;
+			return 0;
 		}
 
 		return 0;
