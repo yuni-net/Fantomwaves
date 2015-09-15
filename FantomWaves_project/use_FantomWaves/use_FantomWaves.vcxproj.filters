@@ -128,6 +128,9 @@
     <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp">
       <Filter>FantomWaves\NetWork\IP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp">
+      <Filter>FantomWaves\Bindata</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h">
@@ -240,6 +243,9 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_IP.h">
       <Filter>FantomWaves\NetWork\IP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
+      <Filter>FantomWaves\Bindata</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

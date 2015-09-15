@@ -1,12 +1,12 @@
 #pragma once
 
-#include <fw_includes.h>
-#include <fw_thread.h>
-#include <fw_Array.h>
+#include "fw_includes.h"
+#include "fw_thread.h"
+#include "fw_Array.h"
+#include "fw_Bindata.h"
 
 namespace fw
 {
-	class Bindata;
 
 	class UDP_cliant
 	{

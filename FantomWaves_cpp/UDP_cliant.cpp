@@ -115,8 +115,8 @@ namespace fw
 
 		const int received_bytes = recvfrom(
 			sock,
-			buffer.access_buffer_pointer(),
-			buffer.byte(),
+			buffer.buffer(),
+			buffer.bytes(),
 			MSG_TRUNC,
 			NULL,
 			NULL);
@@ -124,17 +124,17 @@ namespace fw
 		return true;
 	}
 
-	bool UDP_cliant::send(const Bindata & data)
+	bool UDP_cliant::send(const Bindata & data) const
 	{
 		int send_len = sendto(
 			sock,
 			data.buffer(),
-			data.byte(),
+			data.bytes(),
 			0,
-			reinterpret_cast<sockaddr *>(&addr),
+			reinterpret_cast<const sockaddr *>(&addr),
 			sizeof(sockaddr_in));
 
-		return send_len >= data.byte();
+		return send_len >= int(data.bytes());
 	}
 
 #if 0
@@ -196,7 +196,7 @@ namespace fw
 			if (result == time_is_out)
 			{
 				net.did_timeout_ = true;
-				return -1;
+				return;
 			}
 
 			const int data_was_NOT_received = 0;
@@ -214,8 +214,8 @@ namespace fw
 
 			const int received_bytes = recvfrom(
 				net.sock,
-				response.access_buffer_pointer(),
-				response.byte(),
+				response.buffer(),
+				response.bytes(),
 				MSG_TRUNC,
 				reinterpret_cast<sockaddr *>(&their_addr),
 				&addr_len);
@@ -240,6 +240,7 @@ namespace fw
 			net.addr.sin_addr.S_un.S_addr = their_addr.sin_addr.S_un.S_addr;
 		//	net.server_IP.set(inet_ntoa(net.addr.sin_addr));
 			net.did_connect_server_ = true;
+			return;
 		}
 	}
 
