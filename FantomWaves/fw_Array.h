@@ -1,6 +1,8 @@
 #pragma once
 
 #include "fw_trade.h"
+#include "fw_typedef.h"
+#include "fw_includes.h"
 
 namespace fw
 {

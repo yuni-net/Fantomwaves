@@ -50,6 +50,27 @@
     <Filter Include="FantomWaves\WindowEx">
       <UniqueIdentifier>{06efe7c8-7fe8-4d64-ba0c-c50233fe94b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\NetWork">
+      <UniqueIdentifier>{49815cbe-ed30-4f11-a96f-30d20414d130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP">
+      <UniqueIdentifier>{427c0113-2104-4e8e-b2a3-6092cc0ee9ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\UDP_cliant">
+      <UniqueIdentifier>{7a9b2524-3f6d-488a-a87e-ff4be206be03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\UDP_server">
+      <UniqueIdentifier>{52cb6dfa-435d-4bf1-a4e0-f92855e73d9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\UDP_hybrid">
+      <UniqueIdentifier>{9d30b4da-f916-4b24-bd3a-a5cc4fcdbce1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\IP">
+      <UniqueIdentifier>{92431c58-0d86-4879-83d4-1f2f2e632dbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\Bindata">
+      <UniqueIdentifier>{f15f4118-b7d1-4874-ac27-f107a1c9e2b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -97,6 +118,18 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp">
       <Filter>FantomWaves\WindowEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp">
+      <Filter>FantomWaves\NetWork\UDP\UDP_cliant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp">
+      <Filter>FantomWaves\NetWork\IP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp">
+      <Filter>FantomWaves\Bindata</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +234,18 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h">
       <Filter>FantomWaves\WindowEx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h">
+      <Filter>FantomWaves\NetWork\UDP\UDP_cliant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_IP.h">
+      <Filter>FantomWaves\NetWork\IP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
+      <Filter>FantomWaves\Bindata</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
