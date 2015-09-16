@@ -145,7 +145,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
     <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h" />
     <ClInclude Include="..\..\FantomWaves\fw_IP.h" />
-    <ClInclude Include="..\..\FantomWaves\UDP_server.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

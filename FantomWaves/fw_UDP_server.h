@@ -1,5 +1,6 @@
 #pragma once
 
+#include "fw_includes.h"
 #include "fw_Bindata.h"
 
 namespace fw
@@ -94,6 +95,9 @@ namespace fw
 		bool did_create_socket;
 		SOCKET sock;
 		unsigned short port;
+		sockaddr_in addr;
+
+		int get_received_info(sockaddr_in & addr);
 	};
 
 

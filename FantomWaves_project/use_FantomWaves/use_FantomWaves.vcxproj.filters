@@ -250,7 +250,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
       <Filter>FantomWaves\Bindata</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\UDP_server.h">
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h">
       <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
     </ClInclude>
   </ItemGroup>
