@@ -2,6 +2,7 @@
 #include <fw_NetWork.h>
 #include <fw_zeromemory.h>
 #include <fw_cast.h>
+#include <fw_Log.h>
 
 namespace fw
 {
@@ -11,7 +12,15 @@ namespace fw
 		if (NetWork::init_ifneed() == false){ return false; }
 
 		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		if (sock == INVALID_SOCKET){ return false; }
+		if (sock == INVALID_SOCKET)
+		{
+			Log::write("server: failed to create socket");
+			return false;
+		}
+		else
+		{
+			Log::write("server: succeeded to create socket");
+		}
 
 		did_create_socket = true;
 
@@ -19,7 +28,15 @@ namespace fw
 		addr.sin_port = htons(port);
 		addr.sin_addr.S_un.S_addr = INADDR_ANY;
 		const int result = bind(sock, reinterpret_cast<sockaddr *>(&addr), sizeof(sockaddr_in));
-		if (result == -1){ return false; }
+		if (result == -1)
+		{ 
+			Log::write("server: failed to bind port");
+			return false; 
+		}
+		else
+		{
+			Log::write("server: succeeded to bind port");
+		}
 
 		return true;
 	}
@@ -47,6 +64,8 @@ namespace fw
 
 			const int data_was_NOT_received = 0;
 			if (FD_ISSET(sock, &fds) == data_was_NOT_received) { return false; }
+
+			Log::write("server: there are any left datas");
 
 			return true;
 		}

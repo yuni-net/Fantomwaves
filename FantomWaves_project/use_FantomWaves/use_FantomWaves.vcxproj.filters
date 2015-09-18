@@ -71,6 +71,9 @@
     <Filter Include="FantomWaves\Bindata">
       <UniqueIdentifier>{f15f4118-b7d1-4874-ac27-f107a1c9e2b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\NetWork\Log">
+      <UniqueIdentifier>{82e67db1-26c5-438d-afc6-3078ec394821}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp">
       <Filter>FantomWaves\NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\Log.cpp">
+      <Filter>FantomWaves\NetWork\Log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h">
       <Filter>FantomWaves\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_Log.h">
+      <Filter>FantomWaves\NetWork\Log</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

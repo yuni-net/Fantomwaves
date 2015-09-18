@@ -3,6 +3,7 @@
 #include <fw_NetWork.h>
 #include <fw_zeromemory.h>
 #include <fw_cast.h>
+#include <fw_Log.h>
 
 namespace fw
 {
@@ -18,15 +19,32 @@ namespace fw
 		if (NetWork::init_ifneed() == false) { return false; }
 
 		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		if (sock == INVALID_SOCKET) { return false; }
+		if (sock == INVALID_SOCKET)
+		{
+			Log::write("cliant: failed to create socket");
+			return false;
+		}
+		else
+		{
+			Log::write("cliant: succeeded to create socket");
+		}
 
 		const int perm = 1;	// 必ずintである必要がある。
 		const int result = setsockopt(sock, SOL_SOCKET, SO_BROADCAST, reinterpret_cast<const char *>(&perm), sizeof(int));
 		const int error = -1;
-		if (result == error) { return false; }
+		if (result == error)
+		{
+			Log::write("cliant: failed to setsockopt");
+			return false;
+		}
+		else
+		{
+			Log::write("cliant: succeeded to setsockopt");
+		}
 
 		set_addr_for_broadcast();
 		send(data);
+		Log::write("cliant: broadcast was send");
 
 		did_timeout_ = false;
 		did_connect_server_ = false;
@@ -70,6 +88,8 @@ namespace fw
 			const int data_was_NOT_received = 0;
 			if (FD_ISSET(sock, &fds) == data_was_NOT_received) { return false; }
 
+			Log::write("cliant: a message was received");
+
 			zeromemory(&their_addr);
 			char damy;
 			int addr_len = sizeof(sockaddr_in);
@@ -85,6 +105,7 @@ namespace fw
 
 			if (their_addr.sin_addr.S_un.S_addr != addr.sin_addr.S_un.S_addr)
 			{
+				Log::write("cliant: that address is self address");
 				continue;
 			}
 
@@ -182,6 +203,7 @@ namespace fw
 			const int time_is_out = 0;
 			if (result == time_is_out)
 			{
+				Log::write("cliant: server was not found cuz timeout");
 				net.did_timeout_ = true;
 				return;
 			}
@@ -192,6 +214,8 @@ namespace fw
 				Sleep(15);
 				continue;
 			}
+
+			Log::write("cliant: You received a response for broadcast");
 
 			sockaddr_in their_addr;
 			zeromemory(&their_addr);
@@ -209,18 +233,21 @@ namespace fw
 
 			if (received_bytes != net.server_response.bytes())
 			{
+				Log::write("cliant: size of received data was unexpected");
 				// データサイズが想定外ということはサーバーから送られてきたデータではない
 				continue;
 			}
 
 			if (NetWork::is_my_address(their_addr.sin_addr.S_un.S_addr))
 			{
+				Log::write("cliant: that is self address");
 				// 自分自身からのメッセージは無視する
 				continue;
 			}
 
 			if (response != net.server_response)
 			{
+				Log::write("cliant: that is NOT server's response");
 				continue;
 			}
 

@@ -1,5 +1,6 @@
 #include <fw_includes.h>
 #include <fw_NetWork.h>
+#include <fw_Log.h>
 
 namespace fw
 {
@@ -27,6 +28,14 @@ namespace fw
 	{
 		WSADATA wsa;
 		did_succeed = WSAStartup(MAKEWORD(2, 2), &wsa)==0;
+		if (did_succeed)
+		{
+			Log::write("succeeded to WSAStartup");
+		}
+		else
+		{
+			Log::write("failed to WSAStartup");
+		}
 		listup_alotof_myaddr();
 	}
 
