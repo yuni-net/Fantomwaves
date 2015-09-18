@@ -31,6 +31,7 @@ namespace fw
 		did_timeout_ = false;
 		did_connect_server_ = false;
 		newthread(find_server, this);
+		return true;
 	}
 
 	bool UDP_cliant::did_timeout() const

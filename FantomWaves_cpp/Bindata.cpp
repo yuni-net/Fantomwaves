@@ -19,7 +19,7 @@ namespace fw
 
 	uint Bindata::bytes() const
 	{
-		mybuffer.size();
+		return mybuffer.size();
 	}
 
 	bool Bindata::operator!=(const Bindata & another) const
