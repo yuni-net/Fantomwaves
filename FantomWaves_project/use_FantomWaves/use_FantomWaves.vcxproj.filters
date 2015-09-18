@@ -131,6 +131,12 @@
     <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp">
       <Filter>FantomWaves\Bindata</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp">
+      <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h">
@@ -246,6 +252,12 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
       <Filter>FantomWaves\Bindata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h">
+      <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h">
+      <Filter>FantomWaves\NetWork</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

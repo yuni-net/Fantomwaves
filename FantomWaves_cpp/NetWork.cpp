@@ -3,9 +3,9 @@
 
 namespace fw
 {
-	void NetWork::init_ifneed()
+	bool NetWork::init_ifneed()
 	{
-		get_instance();
+		return get_instance().did_succeed;
 	}
 
 	bool NetWork::is_my_address(const unsigned long address)
@@ -26,7 +26,7 @@ namespace fw
 	NetWork::NetWork()
 	{
 		WSADATA wsa;
-		WSAStartup(MAKEWORD(2, 2), &wsa);
+		did_succeed = WSAStartup(MAKEWORD(2, 2), &wsa)==0;
 		listup_alotof_myaddr();
 	}
 

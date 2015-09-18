@@ -90,10 +90,12 @@
     <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
@@ -122,6 +124,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_exerror.h" />
     <ClInclude Include="..\..\FantomWaves\fw_filesize.h" />
     <ClInclude Include="..\..\FantomWaves\fw_includes.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h" />
     <ClInclude Include="..\..\FantomWaves\fw_NetWork.h" />
     <ClInclude Include="..\..\FantomWaves\fw_newdire.h" />
     <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h" />
@@ -144,6 +147,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
     <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h" />
     <ClInclude Include="..\..\FantomWaves\fw_IP.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
