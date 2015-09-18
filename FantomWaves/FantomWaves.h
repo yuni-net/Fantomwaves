@@ -121,6 +121,8 @@
 #include "fw_xrandom.h"
 #include "fw_xy2radian.h"
 #include "fw_NetWork.h"
+#include "fw_UDP_cliant.h"
+#include "fw_UDP_server.h"
 
 #ifndef FantomWaves_developing_
 	#ifdef _DEBUG
