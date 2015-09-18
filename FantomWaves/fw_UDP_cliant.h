@@ -19,8 +19,11 @@ namespace fw
 			  data: 自分が正規のクライアントであることを証明するデータを指定する。
 			  limit_time: サーバーからの応答を待つ制限時間を秒数で指定する。
 			  server_response: 送り返されてきたデータがこれと一致すれば、それをサーバーとみなす。
+		 @return
+		      true: 成功
+			  false: 失敗
 		 */
-		void connect_server(
+		bool connect_server(
 			const unsigned short port,
 			const Bindata & data,
 			const int limit_time,

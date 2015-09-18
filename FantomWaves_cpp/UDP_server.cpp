@@ -1,24 +1,26 @@
 #include <fw_UDP_server.h>
 #include <fw_NetWork.h>
 #include <fw_zeromemory.h>
+#include <fw_cast.h>
 
 namespace fw
 {
 	bool UDP_server::start_server(const unsigned short port)
 	{
 		this->port = port;
+		if (NetWork::init_ifneed() == false){ return false; }
 
-		NetWork::init_ifneed();
 		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		if (sock == INVALID_SOCKET){ return false; }
+
 		did_create_socket = true;
+
 		addr.sin_family = AF_INET;
 		addr.sin_port = htons(port);
 		addr.sin_addr.S_un.S_addr = INADDR_ANY;
 		const int result = bind(sock, reinterpret_cast<sockaddr *>(&addr), sizeof(sockaddr_in));
-		if (result == -1)
-		{
-			return false;
-		}
+		if (result == -1){ return false; }
+
 		return true;
 	}
 
@@ -40,36 +42,27 @@ namespace fw
 			timev.tv_usec = 8;
 
 			const int result = select(0, &fds, NULL, NULL, &timev);
-
 			const int time_is_out = 0;
-			if (result == time_is_out)
-			{
-				return false;
-			}
+			if (result == time_is_out) { return false; }
 
 			const int data_was_NOT_received = 0;
-			if (FD_ISSET(sock, &fds) == data_was_NOT_received)
-			{
-				return false;
-			}
+			if (FD_ISSET(sock, &fds) == data_was_NOT_received) { return false; }
 
 			return true;
 		}
 		return false;
 	}
 
-	int UDP_server::get_received_info(sockaddr_in & addr)
+	int UDP_server::get_received_bytes()
 	{
-		zeromemory(&addr);
-		int addr_len = sizeof(sockaddr_in);
 		char damy;
 		return recvfrom(
 			sock,
 			&damy,
 			0,
 			MSG_PEEK | MSG_TRUNC,
-			reinterpret_cast<sockaddr *>(&addr),
-			&addr_len);
+			NULL,
+			NULL);
 	}
 
 	/**
@@ -86,53 +79,96 @@ namespace fw
 			return false;
 		}
 
-		const int data_bytes = get_received_info(cliant_info.addr);
+		const int data_bytes = get_received_bytes();
 		buffer.set_size(data_bytes);
+		int addr_len = sizeof(sockaddr_in);
 
 		const int received_bytes = recvfrom(
 			sock,
 			buffer.buffer(),
 			buffer.bytes(),
 			MSG_TRUNC,
-			NULL,
-			NULL);
+			pointer_cast<sockaddr *>(&(cliant_info.addr)),
+			&addr_len);
 
 		return true;
 	}
 
 	void UDP_server::add_cliant(const NetSurfer & cliant_info)
 	{
-		// todo
+		cliant_list.push_back(cliant_info);
 	}
 	void UDP_server::remove_cliant(const NetSurfer & cliant_info)
 	{
-		// todo
+		for (auto rator = cliant_list.begin(); rator != cliant_list.end(); ++rator)
+		{
+			const sockaddr_in & now_addr = (*rator).addr;
+			const sockaddr_in & cliant_addr = cliant_info.addr;
+			if (now_addr.sin_addr.S_un.S_addr == cliant_addr.sin_addr.S_un.S_addr)
+			{
+				cliant_list.erase(rator);
+				return;
+			}
+		}
 	}
 
 	bool UDP_server::send_a_cliant(const Bindata & data, const NetSurfer & cliant_info) const
 	{
-		// todo
+		const int send_len = sendto(
+			sock,
+			data.buffer(),
+			data.bytes(),
+			0,
+			reinterpret_cast<const sockaddr *>(&cliant_info.addr),
+			sizeof(sockaddr_in));
+
+		return send_len >= int(data.bytes());
 	}
 	bool UDP_server::send_a_cliant(const Bindata & data) const
 	{
-		// todo
+		const NetSurfer & cliant_info = *current_cliant;
+		return send_a_cliant(data, cliant_info);
 	}
 	bool UDP_server::send_all(const Bindata & data) const
 	{
-		// todo
+		bool did_succeed = true;
+		for (auto rator = cliant_list.begin(); rator != cliant_list.end(); ++rator)
+		{
+			if (send_a_cliant(data, *rator) == false)
+			{
+				did_succeed = false;
+			}
+		}
+
+		return did_succeed;
+	}
+	bool UDP_server::send_all_except(const NetSurfer & excepted_cliant, const  Bindata & data) const
+	{
+		bool did_succeed = true;
+		for (auto rator = cliant_list.begin(); rator != cliant_list.end(); ++rator)
+		{
+			if ((*rator) == excepted_cliant) { continue; }
+
+			if (send_a_cliant(data, *rator) == false)
+			{
+				did_succeed = false;
+			}
+		}
+
+		return did_succeed;
 	}
 
 	void UDP_server::begin_enum_cliants()
 	{
-		// todo
+		current_cliant = cliant_list.begin();
 	}
 	bool UDP_server::did_finish_enum() const
 	{
-		// todo
+		return current_cliant == cliant_list.end();
 	}
 	void UDP_server::goto_next_cliant()
 	{
-		// todo
+		++current_cliant;
 	}
 
 
@@ -140,6 +176,7 @@ namespace fw
 	UDP_server::UDP_server()
 	{
 		did_create_socket = false;
+		current_cliant = cliant_list.begin();
 	}
 	UDP_server::~UDP_server()
 	{

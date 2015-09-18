@@ -1,7 +1,9 @@
 #pragma once
 
+#include <list>
 #include "fw_includes.h"
 #include "fw_Bindata.h"
+#include "fw_NetSurfer.h"
 
 namespace fw
 {
@@ -32,6 +34,7 @@ namespace fw
 		bool send_a_cliant(const Bindata & data, const NetSurfer & cliant_info) const;
 		bool send_a_cliant(const Bindata & data) const;
 		bool send_all(const Bindata & data) const;
+		bool send_all_except(const NetSurfer & excepted_cliant, const  Bindata & data) const;
 
 		void begin_enum_cliants();
 		bool did_finish_enum() const;
@@ -96,8 +99,10 @@ namespace fw
 		SOCKET sock;
 		unsigned short port;
 		sockaddr_in addr;
+		std::list<NetSurfer> cliant_list;
+		std::list<NetSurfer>::iterator current_cliant;
 
-		int get_received_info(sockaddr_in & addr);
+		int get_received_bytes();
 	};
 
 
