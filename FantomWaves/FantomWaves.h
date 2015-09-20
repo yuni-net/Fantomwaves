@@ -121,6 +121,7 @@
 #include "fw_xrandom.h"
 #include "fw_xy2radian.h"
 #include "fw_NetWork.h"
+#include "fw_P2P.h"
 
 #ifndef FantomWaves_developing_
 	#ifdef _DEBUG

@@ -94,6 +94,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h" />
     <ClInclude Include="..\..\FantomWaves\fw_IP.h" />
     <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_P2P.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
