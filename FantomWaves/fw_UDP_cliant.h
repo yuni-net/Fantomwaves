@@ -17,8 +17,6 @@ namespace fw
 		bool did_receive() const;
 		bool pop_received_data(Bindata & data);
 
-		void wait_receive() const;
-		void wait_receive(unsigned long interval) const;
 
 
 
@@ -45,23 +43,16 @@ namespace fw
 				// todo
 			}
 
-			// ‚à‚µ‚­‚Í
-#if 0
-			cliant.wait_receive();
-			std::string data;
-			cliant.pop_received_data(data);
-			// todo
-#endif
 		}
 #endif
 
 		UDP_cliant();
 		~UDP_cliant();
 	private:
-		bool did_create_socket;
 		SOCKET sock;
 		NetSurfer server_info;
 
 		int get_received_bytes() const;
+		bool create_socket_ifneed();
 	};
 }

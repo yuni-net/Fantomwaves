@@ -6,16 +6,18 @@
 
 namespace fw
 {
+	bool UDP_cliant::create_socket_ifneed()
+	{
+		if (sock != INVALID_SOCKET){ return true; }
+		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		return sock != INVALID_SOCKET;
+	}
 
 	bool UDP_cliant::init(const NetSurfer & server_info)
 	{
 		this->server_info = server_info;
 		if (NetWork::init_ifneed() == false){ return false; }
-
-		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		if (sock == INVALID_SOCKET){ return false; }
-
-		did_create_socket = true;
+		if (create_socket_ifneed() == false){ return false; }
 		return true;
 	}
 
@@ -74,18 +76,6 @@ namespace fw
 		return true;
 	}
 
-	void UDP_cliant::wait_receive() const
-	{
-		wait_receive(8);
-	}
-
-	void UDP_cliant::wait_receive(unsigned long interval) const
-	{
-		while (did_receive() == false)
-		{
-			Sleep(interval);
-		}
-	}
 
 
 
@@ -94,11 +84,11 @@ namespace fw
 
 	UDP_cliant::UDP_cliant()
 	{
-		did_create_socket = false;
+		sock = INVALID_SOCKET;
 	}
 	UDP_cliant::~UDP_cliant()
 	{
-		if (did_create_socket)
+		if (sock != INVALID_SOCKET)
 		{
 			closesocket(sock);
 		}
