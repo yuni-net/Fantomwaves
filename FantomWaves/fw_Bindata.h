@@ -22,11 +22,15 @@ namespace fw
 		template<typename T> void add(const T & data);
 		void show_cmd() const;
 
+		Bindata & operator>>(std::string & text);
+		template<typename T> Bindata & operator>>(T & data);
 
 
 
 
+		Bindata();
 	private:
 		Array<char> mybuffer;
+		unsigned int read_beg;
 	};
 }
