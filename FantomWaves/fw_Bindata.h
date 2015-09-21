@@ -13,6 +13,11 @@ namespace fw
 		const char * buffer() const;
 		uint bytes() const;
 		bool operator!=(const Bindata & another) const;
+
+		/**
+		 @brief 文字列データを追加する。
+		 @detail 最後のヌル文字も含めて追加される。
+		 */
 		void add(const std::string & text);
 		template<typename T> void add(const T & data);
 		void show_cmd() const;
