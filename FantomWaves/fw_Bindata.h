@@ -23,7 +23,12 @@ namespace fw
 		void show_cmd() const;
 
 		Bindata & operator>>(std::string & text);
-		template<typename T> Bindata & operator>>(T & data);
+		template<typename T> Bindata & operator>>(T & data)
+		{
+			memcpy(&data, mybuffer.address(read_beg), sizeof(T));
+			read_beg += sizeof(T);
+			return *this;
+		}
 
 
 
