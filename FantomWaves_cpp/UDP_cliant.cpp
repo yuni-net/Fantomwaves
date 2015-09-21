@@ -7,9 +7,16 @@
 namespace fw
 {
 
-	void UDP_cliant::set_server_info(const NetSurfer & server_info)
+	bool UDP_cliant::init(const NetSurfer & server_info)
 	{
 		this->server_info = server_info;
+		if (NetWork::init_ifneed() == false){ return false; }
+
+		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		if (sock == INVALID_SOCKET){ return false; }
+
+		did_create_socket = true;
+		return true;
 	}
 
 	bool UDP_cliant::send(const Bindata & data) const

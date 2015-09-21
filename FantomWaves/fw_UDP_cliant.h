@@ -12,7 +12,7 @@ namespace fw
 	class UDP_cliant
 	{
 	public:
-		void set_server_info(const NetSurfer & server_info);
+		bool init(const NetSurfer & server_info);
 		bool send(const Bindata & data) const;
 		bool did_receive() const;
 		bool pop_received_data(Bindata & data);
@@ -31,7 +31,7 @@ namespace fw
 		fw::UDP_cliant cliant;
 		cliant.set_server_info(server_info);
 
-		std::string data;
+		fw::Bindata data;
 		set_data(data);
 		cliant.send(data);
 
