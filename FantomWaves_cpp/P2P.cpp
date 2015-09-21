@@ -5,14 +5,9 @@
 
 namespace fw
 {
-	bool P2P::start()
+	bool P2P::bind_port_ifneed()
 	{
-		if (NetWork::init_ifneed() == false){ return false; }
-
-		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		if (sock == INVALID_SOCKET){ return false; }
-
-		did_create_socket = true;
+		if (did_bind){ return true; }
 
 		zeromemory(&addr);
 		addr.sin_family = AF_INET;
@@ -31,7 +26,22 @@ namespace fw
 				break;
 			}
 		}
+		did_bind = true;
+		return true;
+	}
 
+	bool P2P::create_socket_ifneed()
+	{
+		if (sock != INVALID_SOCKET){ return true; }
+		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		return sock != INVALID_SOCKET;
+	}
+
+	bool P2P::start()
+	{
+		if (NetWork::init_ifneed() == false){ return false; }
+		if (create_socket_ifneed() == false){ return false; }
+		if (bind_port_ifneed() == false){ return false; }
 		return true;
 	}
 
@@ -98,11 +108,12 @@ namespace fw
 
 	P2P::P2P()
 	{
-		did_create_socket = false;
+		sock = INVALID_SOCKET;
+		did_bind = false;
 	}
 	P2P::~P2P()
 	{
-		if (did_create_socket)
+		if (sock != INVALID_SOCKET)
 		{
 			closesocket(sock);
 		}

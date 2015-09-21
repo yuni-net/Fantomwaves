@@ -39,12 +39,14 @@ namespace fw
 		~P2P();
 	private:
 		SOCKET sock;
-		bool did_create_socket;
 		sockaddr_in addr;
 		unsigned short port;
+		bool did_bind;
 
 
 		int get_received_bytes() const;
+		bool bind_port_ifneed();
+		bool create_socket_ifneed();
 
 	};
 }
