@@ -58,4 +58,24 @@ namespace fw
 		}
 	}
 
+
+	Bindata::Bindata()
+	{
+		read_beg = 0;
+	}
+
+	Bindata & Bindata::operator>>(std::string & text)
+	{
+		text = mybuffer.address(read_beg);
+		read_beg += text.length() + 1;
+		return *this;
+	}
+	template<typename T> Bindata & Bindata::operator>>(T & data)
+	{
+		memcpy(&data, mybuffer.address(read_beg), sizeof(T));
+		read_beg += sizeof(T);
+		return *this;
+	}
+
+
 }
