@@ -3,7 +3,7 @@
  *
  * this library contains utility class and function and etc...
  *
- * Version: 2.0.0
+ * Version: 3.0.0
  * FinalUpdate: 14th Jul 2015
  * Author: yuni.net.liberty
  *
@@ -122,6 +122,7 @@
 #include "fw_xy2radian.h"
 #include "fw_NetWork.h"
 #include "fw_P2P.h"
+#include "fw_UDP_cliant.h"
 
 #ifndef FantomWaves_developing_
 	#ifdef _DEBUG
