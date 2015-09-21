@@ -1,3 +1,4 @@
+#include <iostream>
 #include <fw_Bindata.h>
 
 namespace fw
@@ -37,5 +38,24 @@ namespace fw
 		return true;
 	}
 
+
+	void Bindata::add(const std::string & text)
+	{
+		mybuffer.add(text.c_str(), text.length() + 1);
+	}
+
+	template<typename T> void Bindata::add(const T & data)
+	{
+		mybuffer.add(&data, sizeof(T));
+	}
+
+
+	void Bindata::show_cmd() const
+	{
+		for (uint i = 0; i < mybuffer.size(); ++i)
+		{
+			std::cout << std::string(1, mybuffer[i]) << "(" << uchar(mybuffer[i]) << ")" << std::endl;
+		}
+	}
 
 }

@@ -13,6 +13,9 @@ namespace fw
 		const char * buffer() const;
 		uint bytes() const;
 		bool operator!=(const Bindata & another) const;
+		void add(const std::string & text);
+		template<typename T> void add(const T & data);
+		void show_cmd() const;
 
 
 
