@@ -1,6 +1,7 @@
 #include <fw_P2P.h>
 #include <fw_NetWork.h>
 #include <fw_cast.h>
+#include <fw_zeromemory.h>
 
 namespace fw
 {
@@ -13,11 +14,12 @@ namespace fw
 
 		did_create_socket = true;
 
+		zeromemory(&addr);
+		addr.sin_family = AF_INET;
+		addr.sin_addr.S_un.S_addr = INADDR_ANY;
 		for (port = min_ephemeral_port; port <= max_ephemeral_port; ++port)
 		{
-			addr.sin_family = AF_INET;
 			addr.sin_port = htons(port);
-			addr.sin_addr.S_un.S_addr = INADDR_ANY;
 			const int result = bind(sock, reinterpret_cast<sockaddr *>(&addr), sizeof(sockaddr_in));
 			const int error = -1;
 			if (result == error)
@@ -45,8 +47,8 @@ namespace fw
 			data.buffer(),
 			data.bytes(),
 			0,
-			reinterpret_cast<const sockaddr *>(&cliant_info.addr),
-			sizeof(sockaddr_in));
+			cliant_info.get_address_pointer(),
+			cliant_info.get_address_bytes());
 
 		return send_len >= int(data.bytes());
 	}
@@ -80,14 +82,14 @@ namespace fw
 
 		const int data_bytes = get_received_bytes();
 		buffer.set_size(data_bytes);
-		int addr_len = sizeof(sockaddr_in);
+		int addr_len = cliant_info.get_address_bytes();
 
 		const int received_bytes = recvfrom(
 			sock,
 			buffer.buffer(),
 			buffer.bytes(),
 			MSG_TRUNC,
-			pointer_cast<sockaddr *>(&(cliant_info.addr)),
+			cliant_info.get_address_pointer(),
 			&addr_len);
 
 		return true;

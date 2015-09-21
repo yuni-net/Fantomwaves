@@ -88,7 +88,7 @@ namespace fw
 			buffer.buffer(),
 			buffer.bytes(),
 			MSG_TRUNC,
-			pointer_cast<sockaddr *>(&(cliant_info.addr)),
+			cliant_info.get_address_pointer(),
 			&addr_len);
 
 		return true;
@@ -102,8 +102,8 @@ namespace fw
 	{
 		for (auto rator = cliant_list.begin(); rator != cliant_list.end(); ++rator)
 		{
-			const sockaddr_in & now_addr = (*rator).addr;
-			const sockaddr_in & cliant_addr = cliant_info.addr;
+			const sockaddr_in & now_addr = (*rator).get_address();
+			const sockaddr_in & cliant_addr = cliant_info.get_address();
 			if (now_addr.sin_addr.S_un.S_addr == cliant_addr.sin_addr.S_un.S_addr)
 			{
 				cliant_list.erase(rator);
@@ -119,8 +119,8 @@ namespace fw
 			data.buffer(),
 			data.bytes(),
 			0,
-			reinterpret_cast<const sockaddr *>(&cliant_info.addr),
-			sizeof(sockaddr_in));
+			cliant_info.get_address_pointer(),
+			cliant_info.get_address_bytes());
 
 		return send_len >= int(data.bytes());
 	}
