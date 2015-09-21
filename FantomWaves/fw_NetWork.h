@@ -4,6 +4,8 @@
 
 namespace fw
 {
+	const unsigned short min_ephemeral_port = 49152;
+	const unsigned short max_ephemeral_port = 65535;
 
 	class NetWork
 	{

@@ -71,6 +71,9 @@
     <Filter Include="FantomWaves\Bindata">
       <UniqueIdentifier>{f15f4118-b7d1-4874-ac27-f107a1c9e2b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\P2P">
+      <UniqueIdentifier>{b9b0b22b-1db0-4539-adc3-880225a6867a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp">
       <Filter>FantomWaves\NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp">
+      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h">
       <Filter>FantomWaves\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_P2P.h">
+      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
