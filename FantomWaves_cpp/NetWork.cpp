@@ -20,6 +20,16 @@ namespace fw
 		return false;
 	}
 
+	int NetWork::get_num_my_address()
+	{
+		return get_instance().myaddr_list.size();
+	}
+
+	const std::string & NetWork::get_my_address_text(int address_No)
+	{
+		return get_instance().myaddr_text_list[address_No];
+	}
+
 
 
 
@@ -56,6 +66,7 @@ namespace fw
 			const in_addr * inaddr = reinterpret_cast<const in_addr *>(base_addr);
 			unsigned long myaddr = inaddr->S_un.S_addr;
 			myaddr_list.add(myaddr);
+			myaddr_text_list.add(std::string(inet_ntoa(*inaddr)));
 			++addr_No;
 		}
 	}
