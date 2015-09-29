@@ -3,7 +3,7 @@
  *
  * this library contains utility class and function and etc...
  *
- * Version: 5.1.1
+ * Version: 5.1.2
  * FinalUpdate: 21st Sep 2015
  * Author: yuni.net.liberty
  *
