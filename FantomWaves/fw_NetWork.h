@@ -24,12 +24,24 @@ namespace fw
 		 */
 		static bool is_my_address(const unsigned long address);
 
+		/**
+		 @return
+		      the number of my IP addresses.
+		 */
+		static int get_num_my_address();
+
+		/**
+		 @return
+		      the my address with text style.
+		 */
+		static const std::string & get_my_address_text(int address_No);
 
 
 
 	private:
 		bool did_succeed;
 		Array<unsigned long> myaddr_list;
+		Array<std::string> myaddr_text_list;
 
 		static NetWork & get_instance();
 		NetWork();
