@@ -85,12 +85,16 @@ namespace fw
 
 	bool P2P::pop_received_data(Bindata & buffer, NetSurfer & cliant_info)
 	{
+#if 1
 		if (are_there_any_left_datas() == false)
 		{
 			return false;
 		}
 
 		const int data_bytes = get_received_bytes();
+#else
+		const int data_bytes = 1024;
+#endif
 		buffer.set_size(data_bytes);
 		int addr_len = cliant_info.get_address_bytes();
 
@@ -98,9 +102,16 @@ namespace fw
 			sock,
 			buffer.buffer(),
 			buffer.bytes(),
-			MSG_TRUNC,
+			0,
 			cliant_info.get_address_pointer(),
 			&addr_len);
+
+		if (received_bytes == -1)
+		{
+			printf("failed to recvfrom\n");
+			int e = WSAGetLastError();
+			printf("error_code:"); printf("%d\n", e);
+		}
 
 		return true;
 	}
@@ -122,14 +133,37 @@ namespace fw
 
 	int P2P::get_received_bytes() const
 	{
-		char damy;
-		return recvfrom(
-			sock,
-			&damy,
-			0,
-			MSG_PEEK | MSG_TRUNC,
-			NULL,
-			NULL);
+		Bindata buffer;
+		buffer.set_size(1);
+		int received_bytes;
+
+		while (true)
+		{
+			received_bytes = recvfrom(
+				sock,
+				buffer.buffer(),
+				buffer.bytes(),
+				MSG_PEEK,
+				NULL,
+				NULL);
+
+			const int error = -1;
+			if (received_bytes != error)
+			{
+				break;
+			}
+
+			const int buffer_overflow = 10040;
+			if (WSAGetLastError() != buffer_overflow)
+			{
+				return error;
+			}
+
+			buffer.set_size(buffer.bytes() * 2);
+			continue;
+		}
+
+		return received_bytes;
 	}
 
 
