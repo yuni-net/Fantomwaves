@@ -20,6 +20,14 @@ namespace fw
 		 */
 		void add(const std::string & text);
 		template<typename T> void add(const T & data);
+
+		/**]
+		 @brief データ内容を標準出力に出力する。
+		 @detail 
+		    標準出力がコマンドプロンプトになっていることが前提。
+			文字コードが示す文字(nバイト目の数値)
+			上記のようなフォーマットで全データ出力される。
+		 */
 		void show_cmd() const;
 
 		Bindata & operator>>(std::string & text);
