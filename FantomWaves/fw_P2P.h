@@ -2,10 +2,11 @@
 
 #include "fw_includes.h"
 #include "fw_NetSurfer.h"
-#include "fw_Bindata.h"
 
 namespace fw
 {
+	class Bindata;
+
 	/**
 	 peer to peer の通信を司るクラスです。
 	 (1)一度もsendを行っていない状態でデータを受け取ることはあり得ません。

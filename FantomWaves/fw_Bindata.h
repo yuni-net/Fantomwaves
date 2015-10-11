@@ -1,5 +1,3 @@
-#pragma once
-
 #include "fw_typedef.h"
 #include "fw_Array.h"
 

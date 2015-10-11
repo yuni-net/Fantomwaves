@@ -2,6 +2,8 @@
 #include <fw_NetWork.h>
 #include <fw_cast.h>
 #include <fw_zeromemory.h>
+#include "fw_Bindata.h"
+
 
 namespace fw
 {
