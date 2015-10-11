@@ -19,6 +19,7 @@ namespace fw
 		bool operator==(const NetSurfer & another) const;
 		bool operator!=(const NetSurfer & another) const;
 
+		NetSurfer & operator=(const NetSurfer & another);
 
 
 

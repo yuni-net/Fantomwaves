@@ -23,6 +23,13 @@ namespace fw
 	}
 
 
+	NetSurfer & NetSurfer::operator=(const NetSurfer & another)
+	{
+		addr = another.addr;
+		return *this;
+	}
+
+
 
 
 	NetSurfer::NetSurfer()
