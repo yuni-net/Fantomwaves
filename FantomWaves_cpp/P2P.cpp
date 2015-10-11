@@ -2,56 +2,31 @@
 #include <fw_NetWork.h>
 #include <fw_cast.h>
 #include <fw_zeromemory.h>
+#include "fw_Bindata.h"
+
 
 namespace fw
 {
-	bool P2P::bind_port_ifneed()
-	{
-		if (did_bind){ return true; }
-
-		zeromemory(&addr);
-		addr.sin_family = AF_INET;
-		addr.sin_addr.S_un.S_addr = INADDR_ANY;
-		for (port = min_ephemeral_port; port <= max_ephemeral_port; ++port)
-		{
-			addr.sin_port = htons(port);
-			const int result = bind(sock, reinterpret_cast<sockaddr *>(&addr), sizeof(sockaddr_in));
-			const int error = -1;
-			if (result == error)
-			{
-				if (port == max_ephemeral_port){ return false; }
-			}
-			else
-			{
-				break;
-			}
-		}
-		did_bind = true;
-		return true;
-	}
-
-	bool P2P::create_socket_ifneed()
-	{
-		if (sock != INVALID_SOCKET){ return true; }
-		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		return sock != INVALID_SOCKET;
-	}
-
-	bool P2P::start()
-	{
-		if (NetWork::init_ifneed() == false){ return false; }
-		if (create_socket_ifneed() == false){ return false; }
-		if (bind_port_ifneed() == false){ return false; }
-		return true;
-	}
-
 	unsigned short P2P::get_port() const
 	{
-		return port;
+		return ntohs(addr.sin_port);
 	}
+
+	void P2P::set_lifeline_ifneed(const NetSurfer & surfer) const
+	{
+		if (did_set_lifeline){ return; }
+		lifeline = surfer;
+		did_set_lifeline = true;
+		// todo begin calling 'I still alive' at regular intervals.
+		const unsigned int interval_mili_sec = 6000;
+		timer_id = SetTimer(NULL, reinterpret_cast<UINT_PTR>(this), interval_mili_sec, call_I_still_alive);
+	}
+
 
 	bool P2P::send(const NetSurfer & cliant_info, const Bindata & data) const
 	{
+		set_lifeline_ifneed(cliant_info);
+
 		const int send_len = sendto(
 			sock,
 			data.buffer(),
@@ -85,16 +60,12 @@ namespace fw
 
 	bool P2P::pop_received_data(Bindata & buffer, NetSurfer & cliant_info)
 	{
-#if 1
 		if (are_there_any_left_datas() == false)
 		{
 			return false;
 		}
 
 		const int data_bytes = get_received_bytes();
-#else
-		const int data_bytes = 1024;
-#endif
 		buffer.set_size(data_bytes);
 		int addr_len = cliant_info.get_address_bytes();
 
@@ -119,11 +90,18 @@ namespace fw
 
 	P2P::P2P()
 	{
+		did_set_lifeline = false;
 		sock = INVALID_SOCKET;
-		did_bind = false;
+		if (NetWork::init_ifneed() == false){ return; }
+		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	}
 	P2P::~P2P()
 	{
+		if (did_set_lifeline)
+		{
+			KillTimer(NULL, timer_id);
+		}
+
 		if (sock != INVALID_SOCKET)
 		{
 			closesocket(sock);
@@ -134,7 +112,7 @@ namespace fw
 	int P2P::get_received_bytes() const
 	{
 		Bindata buffer;
-		buffer.set_size(1);
+		buffer.set_size(2048);
 		int received_bytes;
 
 		while (true)
@@ -166,5 +144,12 @@ namespace fw
 		return received_bytes;
 	}
 
+	void CALLBACK P2P::call_I_still_alive(HWND, UINT, UINT_PTR self_pointer, DWORD)
+	{
+		P2P & self = *reinterpret_cast<P2P *>(self_pointer);
+		Bindata data;
+		data.add(char(0));
+		self.send(self.lifeline, data);
+	}
 
 }

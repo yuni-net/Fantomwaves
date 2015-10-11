@@ -44,10 +44,6 @@ namespace fw
 		mybuffer.add(text.c_str(), text.length() + 1);
 	}
 
-	template<typename T> void Bindata::add(const T & data)
-	{
-		mybuffer.add(&data, sizeof(T));
-	}
 
 
 	void Bindata::show_cmd() const
