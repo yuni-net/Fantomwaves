@@ -81,6 +81,7 @@ namespace fw
 
 		const int data_bytes = get_received_bytes();
 		buffer.set_size(data_bytes);
+		sockaddr_in cliant_addr;
 		int addr_len = sizeof(sockaddr_in);
 
 		const int received_bytes = recvfrom(
@@ -88,8 +89,10 @@ namespace fw
 			buffer.buffer(),
 			buffer.bytes(),
 			MSG_TRUNC,
-			cliant_info.get_address_pointer(),
+			fw::pointer_cast<sockaddr *>(&cliant_addr),
 			&addr_len);
+
+		cliant_info.set_address(cliant_addr);
 
 		return true;
 	}

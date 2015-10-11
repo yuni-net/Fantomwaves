@@ -40,11 +40,11 @@ namespace fw
 
 		void set_address(const sockaddr_in & address);
 		const sockaddr_in & get_address() const;
-		sockaddr * get_address_pointer();
 		const sockaddr * get_address_pointer() const;
 		int get_address_bytes() const;
 
 	private:
+		IP ip;
 		sockaddr_in addr;
 
 

@@ -67,14 +67,15 @@ namespace fw
 
 		const int data_bytes = get_received_bytes();
 		buffer.set_size(data_bytes);
-		int addr_len = cliant_info.get_address_bytes();
+		sockaddr_in cliant_addr;
+		int addr_len = sizeof(sockaddr_in);
 
 		const int received_bytes = recvfrom(
 			sock,
 			buffer.buffer(),
 			buffer.bytes(),
 			0,
-			cliant_info.get_address_pointer(),
+			fw::pointer_cast<sockaddr *>(&cliant_addr),
 			&addr_len);
 
 		if (received_bytes == -1)
@@ -83,6 +84,8 @@ namespace fw
 			int e = WSAGetLastError();
 			printf("error_code:"); printf("%d\n", e);
 		}
+
+		cliant_info.set_address(cliant_addr);
 
 		return true;
 	}
