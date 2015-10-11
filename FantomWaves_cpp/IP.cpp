@@ -35,7 +35,7 @@ namespace fw
 	{
 		this->hostname = hostname;
 	}
-	void set_by_hostname(const std::string & hostname)
+	void IP::set_by_hostname(const std::string & hostname)
 	{
 		set_by_hostname(hostname.c_str());
 	}
