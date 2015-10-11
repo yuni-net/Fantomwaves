@@ -45,6 +45,7 @@ namespace fw
 
 	void NetSurfer::set_ip(const IP & ip)
 	{
+		this->ip = ip;
 		addr.sin_addr.S_un.S_addr = ip.to_inet_addr();
 	}
 	void NetSurfer::set_port(const unsigned short port)
@@ -72,6 +73,7 @@ namespace fw
 
 	void NetSurfer::set_address(const sockaddr_in & address)
 	{
+		ip.set(address);
 		addr = address;
 	}
 
@@ -79,13 +81,9 @@ namespace fw
 	{
 		return addr;
 	}
-	sockaddr * NetSurfer::get_address_pointer()
-	{
-		return pointer_cast<sockaddr *>(&addr);
-	}
 	const sockaddr * NetSurfer::get_address_pointer() const
 	{
-		return pointer_cast<const sockaddr *>(&addr);
+		return pointer_cast<const sockaddr *>(&get_address());
 	}
 	int NetSurfer::get_address_bytes() const
 	{
