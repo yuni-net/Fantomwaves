@@ -19,7 +19,15 @@ namespace fw
 		 @detail 最後のヌル文字も含めて追加される。
 		 */
 		void add(const std::string & text);
-		template<typename T> void add(const T & data);
+
+		/**
+		 @brief 任意のバイナリデータを追加する。
+		 */
+		template<typename T> void add(const T & data)
+		{
+			mybuffer.add(&data, sizeof(T));
+		}
+
 
 		/**]
 		 @brief データ内容を標準出力に出力する。
