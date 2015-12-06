@@ -15,11 +15,11 @@ namespace fw
 			return 0.0f;
 		}
 
-		if (abs(d2 - 1.0f) >= 0.0000001f)
+		if (fabsf(d2 - 1.0f) >= 0.0000001f)
 		{
 			// 斜辺の二乗が1でないということは斜辺も1でない
 			// つまり単位ベクトルではない
-			float d = pow(d2, 0.5f);	// √d2
+			float d = powf(d2, 0.5f);	// √d2
 			dx = dx / d;
 			dy = dy / d;
 		}
@@ -29,7 +29,7 @@ namespace fw
 
 	float xy2radian_unit(float x, float y)
 	{
-		float radian = acos(x);
+		float radian = acosf(x);
 
 		if (y < 0.0f)
 		{

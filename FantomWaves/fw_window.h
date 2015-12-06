@@ -139,7 +139,7 @@ namespace fw
 			wc.cbSize = sizeof(WNDCLASSEX);
 			wc.cbWndExtra = 0;
 			wc.hbrBackground = reinterpret_cast<HBRUSH>(COLOR_APPWORKSPACE + 1);
-			wc.hCursor = reinterpret_cast<HCURSOR>(LoadImage(NULL, MAKEINTRESOURCE(IDC_ARROW), IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+			wc.hCursor = reinterpret_cast<HCURSOR>(LoadImage(NULL, IDC_ARROW, IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
 			wc.hIcon = NULL;
 			wc.hIconSm = NULL;
 			wc.hInstance = GetModuleHandle(NULL);
