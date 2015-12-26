@@ -1,6 +1,9 @@
 #include <fw_includes.h>
 #include <fw_NetWork.h>
 
+#pragma warning(push)
+#pragma warning(disable:4996)
+
 namespace fw
 {
 	bool NetWork::init_ifneed()
@@ -52,7 +55,7 @@ namespace fw
 		char buffer[buffersize];
 		gethostname(buffer, buffersize);
 
-		HOSTENT * host = gethostbyname(buffer);
+		HOSTENT * host = gethostbyname(buffer);	// todo C4996
 
 		int addr_No = 0;
 		while (true)
@@ -76,3 +79,5 @@ namespace fw
 		WSACleanup();
 	}
 }
+
+#pragma warning(pop)

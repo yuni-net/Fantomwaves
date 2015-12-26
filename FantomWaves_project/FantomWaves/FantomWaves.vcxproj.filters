@@ -1,204 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="FantomWaves">
-      <UniqueIdentifier>{b265edb0-6132-48ac-a92f-b8085bac693d}</UniqueIdentifier>
-    </Filter>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\FantomWaves\FantomWaves.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_Array.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_Binfile.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_bitflag.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_cast.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_cnct.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_copydire.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_delete.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_enum_.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_eps.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_exchange.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_exeexe.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_exerror.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_filesize.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_includes.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_IP.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_newdire.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_nullice.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_P2P.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_path.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_popup.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_publicdef.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_ring.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_slice.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_stdrandom.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_thread.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_trade.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_typedef.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_view.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_vtypedef.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_Wav.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_window.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_xrandom.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
+    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp">
-      <Filter>FantomWaves</Filter>
-    </ClCompile>
+    <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_Array.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_Bindata.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_Binfile.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_bitflag.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_cast.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_cnct.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_copydire.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_delete.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_enum_.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_eps.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_exchange.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_exeexe.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_exerror.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_filesize.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_includes.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_IP.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_newdire.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_newshortcut.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_nullice.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_P2P.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_path.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_popup.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_publicdef.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_ring.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_slice.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_stdrandom.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_thread.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_trade.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_typedef.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_view.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_vtypedef.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_Wav.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_window.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_xrandom.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
   </ItemGroup>
 </Project>

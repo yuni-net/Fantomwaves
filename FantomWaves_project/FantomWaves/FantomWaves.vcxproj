@@ -11,19 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{18EEDBE8-3202-42AE-B9FD-2AB79B0129D9}</ProjectGuid>
+    <ProjectGuid>{2BD4AE82-0B8C-4335-B0A2-B2CDA72C432F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FantomWaves</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -40,14 +40,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\yuni\projects\cpp\FantomWaves\FantomWaves;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
     <IncludePath>C:\Users\yuni\projects\cpp\FantomWaves\FantomWaves;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -55,12 +51,12 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -72,17 +68,44 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp" />
+  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
     <ClInclude Include="..\..\FantomWaves\fw_Array.h" />
@@ -126,30 +149,6 @@
     <ClInclude Include="..\..\FantomWaves\fw_xrandom.h" />
     <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

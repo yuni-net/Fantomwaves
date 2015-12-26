@@ -3,6 +3,9 @@
 #include <fw_cnct.h>
 #include <fw_cast.h>
 
+#pragma warning(push)
+#pragma warning(disable:4996)
+
 namespace fw
 {
 	IP::IP()
@@ -42,7 +45,7 @@ namespace fw
 
 	void IP::set(const sockaddr_in & address)
 	{
-		hostname = inet_ntoa(address.sin_addr);
+		hostname = inet_ntoa(address.sin_addr);	// todo C4996
 	}
 
 
@@ -88,3 +91,5 @@ namespace fw
 		return inaddr->S_un.S_addr;
 	}
 }
+
+#pragma warning(pop)
