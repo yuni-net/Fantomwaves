@@ -2,158 +2,79 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="FantomWaves">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="FantomWaves\bitflag">
-      <UniqueIdentifier>{20c29061-ee5b-4507-96d5-57566fcb1ca5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\copydire">
-      <UniqueIdentifier>{21f61552-77a7-438c-b9b2-01d0c0913d6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\filesize">
-      <UniqueIdentifier>{37432205-c2de-4ec5-902d-053260887b6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\newdire">
-      <UniqueIdentifier>{02eb65cd-3a17-4a3d-9b4e-470adbbd02ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\xrandom">
-      <UniqueIdentifier>{88c4ce27-9d1a-47be-a154-a13a9124bcf7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\wav">
-      <UniqueIdentifier>{3c4b0729-f881-4ce8-8973-3c6aa4215110}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\view">
-      <UniqueIdentifier>{e25984b1-ef73-4493-879e-856e8463eda8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\thread">
-      <UniqueIdentifier>{cd40af97-a8cf-4705-a1f1-d4af9154152e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\stdrandom">
-      <UniqueIdentifier>{2242fa74-c0c8-476d-9f04-b5a0020211b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\popup">
-      <UniqueIdentifier>{e12f03a6-29a0-4220-9796-1ab7a90b372d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\path">
-      <UniqueIdentifier>{66d97b80-51b2-489d-a98f-c7bb2954b227}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\newshortcut">
-      <UniqueIdentifier>{159f3af4-e04d-4abe-b8de-0b42945c7a47}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\xy2radian">
-      <UniqueIdentifier>{f1fdb7ef-199c-47c4-9052-043b79c27b01}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\Binfile">
-      <UniqueIdentifier>{35f4b346-4c88-4665-b5b2-6cccb58ae252}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\WindowEx">
-      <UniqueIdentifier>{06efe7c8-7fe8-4d64-ba0c-c50233fe94b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\NetWork">
-      <UniqueIdentifier>{49815cbe-ed30-4f11-a96f-30d20414d130}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\NetWork\UDP">
-      <UniqueIdentifier>{427c0113-2104-4e8e-b2a3-6092cc0ee9ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\NetWork\UDP\UDP_cliant">
-      <UniqueIdentifier>{7a9b2524-3f6d-488a-a87e-ff4be206be03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\NetWork\UDP\UDP_server">
-      <UniqueIdentifier>{52cb6dfa-435d-4bf1-a4e0-f92855e73d9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\NetWork\UDP\UDP_hybrid">
-      <UniqueIdentifier>{9d30b4da-f916-4b24-bd3a-a5cc4fcdbce1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FantomWaves\NetWork\IP">
-      <UniqueIdentifier>{92431c58-0d86-4879-83d4-1f2f2e632dbc}</UniqueIdentifier>
+      <UniqueIdentifier>{7dc85daf-6d36-4343-b7c9-bcd6eeed9a0b}</UniqueIdentifier>
     </Filter>
     <Filter Include="FantomWaves\Bindata">
-      <UniqueIdentifier>{f15f4118-b7d1-4874-ac27-f107a1c9e2b7}</UniqueIdentifier>
+      <UniqueIdentifier>{b52af217-640b-4fc8-a5d4-ec6261817597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\Binfile">
+      <UniqueIdentifier>{f2b01a14-9ad5-421f-bf87-98cc6c9e14a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\bitflag">
+      <UniqueIdentifier>{1caf9119-6180-45b0-bd45-b33eba4ecab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\copydire">
+      <UniqueIdentifier>{1dab9200-ad41-4770-8c40-64d17d4b3120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\filesize">
+      <UniqueIdentifier>{2443b3a7-46ae-419c-a29f-f85996d3b063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork">
+      <UniqueIdentifier>{84ec86a0-15c3-40cd-bdaa-f50b74ec6d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\IP">
+      <UniqueIdentifier>{ba2d3c2d-1a0d-4825-b673-a98d08a38103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP">
+      <UniqueIdentifier>{0f3255a4-0f2e-45f1-b1ac-afe13c5b628e}</UniqueIdentifier>
     </Filter>
     <Filter Include="FantomWaves\NetWork\UDP\P2P">
-      <UniqueIdentifier>{b9b0b22b-1db0-4539-adc3-880225a6867a}</UniqueIdentifier>
+      <UniqueIdentifier>{4b143f91-5791-4341-91af-b4f75ecb4fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\UDP_client">
+      <UniqueIdentifier>{17d7df48-82dc-4128-8a79-6bf818bc21d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\UDP_hybrid">
+      <UniqueIdentifier>{3057732d-38a0-47ed-b016-ad99e5271d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\NetWork\UDP\UDP_server">
+      <UniqueIdentifier>{e858c117-0ed9-4117-a17d-f39eecd12ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\newdire">
+      <UniqueIdentifier>{e9911fbc-0cb4-4b79-8fc6-98ca85cd3275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\newshortcut">
+      <UniqueIdentifier>{6814aefc-af71-4881-aa72-bc923b28fa12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\path">
+      <UniqueIdentifier>{ff432681-5f0d-45fe-9b3b-e64ae53a0851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\popup">
+      <UniqueIdentifier>{60bfa4ff-ea82-4384-b18c-987454c40433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\stdrandom">
+      <UniqueIdentifier>{79721e54-11b4-4a67-9648-755f85ec61c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\thread">
+      <UniqueIdentifier>{30be23f3-0260-4e0f-b123-3f2d010aacce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\view">
+      <UniqueIdentifier>{6d626c96-728f-4251-a856-83ee02bf0ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\wav">
+      <UniqueIdentifier>{5d721ff6-633b-4901-9b49-8d9214f3f545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\WindowEx">
+      <UniqueIdentifier>{a5966a3d-eee7-4db6-a492-c8259e9411d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\xrandom">
+      <UniqueIdentifier>{ab020477-a13a-4d21-add8-b87ee1d8d9ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FantomWaves\xy2radian">
+      <UniqueIdentifier>{e14aa182-799c-44c1-aab1-ceb2abbc9f3a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp">
-      <Filter>FantomWaves\Binfile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp">
-      <Filter>FantomWaves\bitflag</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp">
-      <Filter>FantomWaves\copydire</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp">
-      <Filter>FantomWaves\filesize</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp">
-      <Filter>FantomWaves\newdire</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp">
-      <Filter>FantomWaves\newshortcut</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp">
-      <Filter>FantomWaves\path</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp">
-      <Filter>FantomWaves\popup</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp">
-      <Filter>FantomWaves\stdrandom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp">
-      <Filter>FantomWaves\thread</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp">
-      <Filter>FantomWaves\view</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp">
-      <Filter>FantomWaves\wav</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp">
-      <Filter>FantomWaves\xrandom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp">
-      <Filter>FantomWaves\xy2radian</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp">
-      <Filter>FantomWaves\WindowEx</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp">
-      <Filter>FantomWaves\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp">
-      <Filter>FantomWaves\NetWork\UDP\UDP_cliant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp">
-      <Filter>FantomWaves\NetWork\IP</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp">
-      <Filter>FantomWaves\Bindata</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp">
-      <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp">
-      <Filter>FantomWaves\NetWork</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp">
-      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\FantomWaves\FantomWaves.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_includes.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_nullice.h">
-      <Filter>FantomWaves</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_publicdef.h">
       <Filter>FantomWaves</Filter>
     </ClInclude>
@@ -173,6 +94,9 @@
       <Filter>FantomWaves</Filter>
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h">
+      <Filter>FantomWaves</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\FantomWaves.h">
       <Filter>FantomWaves</Filter>
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_Array.h">
@@ -202,6 +126,15 @@
     <ClInclude Include="..\..\FantomWaves\fw_exerror.h">
       <Filter>FantomWaves</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_includes.h">
+      <Filter>FantomWaves</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_nullice.h">
+      <Filter>FantomWaves</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
+      <Filter>FantomWaves\Bindata</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_Binfile.h">
       <Filter>FantomWaves\Binfile</Filter>
     </ClInclude>
@@ -213,6 +146,24 @@
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_filesize.h">
       <Filter>FantomWaves\filesize</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_IP.h">
+      <Filter>FantomWaves\NetWork\IP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_P2P.h">
+      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h">
+      <Filter>FantomWaves\NetWork\UDP\UDP_client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h">
+      <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_newdire.h">
       <Filter>FantomWaves\newdire</Filter>
@@ -235,38 +186,86 @@
     <ClInclude Include="..\..\FantomWaves\fw_view.h">
       <Filter>FantomWaves\view</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_xrandom.h">
-      <Filter>FantomWaves\xrandom</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h">
-      <Filter>FantomWaves\xy2radian</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_Wav.h">
       <Filter>FantomWaves\wav</Filter>
     </ClInclude>
     <ClInclude Include="..\..\FantomWaves\fw_WindowEx.h">
       <Filter>FantomWaves\WindowEx</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_NetWork.h">
-      <Filter>FantomWaves\NetWork</Filter>
+    <ClInclude Include="..\..\FantomWaves\fw_xrandom.h">
+      <Filter>FantomWaves\xrandom</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_UDP_cliant.h">
-      <Filter>FantomWaves\NetWork\UDP\UDP_cliant</Filter>
+    <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h">
+      <Filter>FantomWaves\xy2radian</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_IP.h">
-      <Filter>FantomWaves\NetWork\IP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_Bindata.h">
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp">
       <Filter>FantomWaves\Bindata</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_UDP_server.h">
-      <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_NetSurfer.h">
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp">
+      <Filter>FantomWaves\Binfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp">
+      <Filter>FantomWaves\bitflag</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp">
+      <Filter>FantomWaves\copydire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp">
+      <Filter>FantomWaves\filesize</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp">
       <Filter>FantomWaves\NetWork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\FantomWaves\fw_P2P.h">
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp">
+      <Filter>FantomWaves\NetWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp">
+      <Filter>FantomWaves\NetWork\IP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P.cpp">
       <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_cliant.cpp">
+      <Filter>FantomWaves\NetWork\UDP\UDP_client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\UDP_server.cpp">
+      <Filter>FantomWaves\NetWork\UDP\UDP_server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp">
+      <Filter>FantomWaves\newdire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\newshortcut.cpp">
+      <Filter>FantomWaves\newshortcut</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\path.cpp">
+      <Filter>FantomWaves\path</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\popup.cpp">
+      <Filter>FantomWaves\popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\stdrandom.cpp">
+      <Filter>FantomWaves\stdrandom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\thread.cpp">
+      <Filter>FantomWaves\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\view.cpp">
+      <Filter>FantomWaves\view</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\wav.cpp">
+      <Filter>FantomWaves\wav</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp">
+      <Filter>FantomWaves\WindowEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp">
+      <Filter>FantomWaves\xrandom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp">
+      <Filter>FantomWaves\xy2radian</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
