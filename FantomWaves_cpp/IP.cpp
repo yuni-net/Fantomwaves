@@ -1,10 +1,11 @@
+#include <Ws2tcpip.h>
+#pragma comment(lib, "Ws2_32.lib")
+
 #include <fw_includes.h>
 #include <fw_IP.h>
 #include <fw_cnct.h>
 #include <fw_cast.h>
-
-#pragma warning(push)
-#pragma warning(disable:4996)
+#include <c4996killer.h>
 
 namespace fw
 {
@@ -45,7 +46,7 @@ namespace fw
 
 	void IP::set(const sockaddr_in & address)
 	{
-		hostname = inet_ntoa(address.sin_addr);	// todo C4996
+		hostname = get_textIP(address.sin_addr);
 	}
 
 
@@ -92,4 +93,3 @@ namespace fw
 	}
 }
 
-#pragma warning(pop)

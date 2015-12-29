@@ -73,6 +73,9 @@
     <Filter Include="FantomWaves\xy2radian">
       <UniqueIdentifier>{e14aa182-799c-44c1-aab1-ceb2abbc9f3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\c4996killer">
+      <UniqueIdentifier>{c189858a-d885-40ea-bcc2-af5df30b31d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\fw_publicdef.h">
@@ -198,6 +201,9 @@
     <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h">
       <Filter>FantomWaves\xy2radian</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\c4996killer.h">
+      <Filter>FantomWaves\c4996killer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -266,6 +272,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp">
       <Filter>FantomWaves\xy2radian</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\c4996killer.cpp">
+      <Filter>FantomWaves\c4996killer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

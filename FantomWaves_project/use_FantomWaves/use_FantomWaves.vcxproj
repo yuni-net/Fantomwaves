@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\FantomWaves\c4996killer.h" />
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
     <ClInclude Include="..\..\FantomWaves\fw_Array.h" />
     <ClInclude Include="..\..\FantomWaves\fw_Bindata.h" />
@@ -128,6 +129,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\bfile.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\Bindata.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\bitflag.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\c4996killer.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\copydire.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />

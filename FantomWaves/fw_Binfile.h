@@ -8,9 +8,6 @@
 #include "fw_filesize.h"
 #include "fw_path.h"
 
-#pragma warning(push)
-#pragma warning(disable:4996)
-
 namespace fw
 {
 
@@ -198,4 +195,3 @@ namespace fw
 
 }
 
-#pragma warning(pop)
