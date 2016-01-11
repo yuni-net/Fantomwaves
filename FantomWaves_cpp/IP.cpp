@@ -7,6 +7,9 @@
 #include <fw_cast.h>
 #include <c4996killer.h>
 
+#pragma warning(push)
+#pragma warning(disable:4996)
+
 namespace fw
 {
 	IP::IP()
@@ -93,3 +96,4 @@ namespace fw
 	}
 }
 
+#pragma warning(pop)

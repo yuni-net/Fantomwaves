@@ -44,6 +44,8 @@ namespace fw
 		 @return
 			true: データが取り出されました。
 			false: データの取り出しに失敗しました。dataとsurferの内容は無効なものになっています。
+		 @detail dataに指定するBindata型変数は、事前に容量を確保しておく必要はありません。
+				また、データのバイト数分だけきっちり容量が確保された状態でデータが保存されます。
 		 */
 		bool pop_received_data(Bindata & data, NetSurfer & surfer);
 
