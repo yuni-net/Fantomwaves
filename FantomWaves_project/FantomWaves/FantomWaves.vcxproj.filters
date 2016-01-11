@@ -26,6 +26,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\WindowEx.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\xrandom.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\xy2radian.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\c4996killer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
