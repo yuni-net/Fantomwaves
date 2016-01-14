@@ -204,6 +204,7 @@
     <ClInclude Include="..\..\FantomWaves\c4996killer.h">
       <Filter>FantomWaves\c4996killer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_ArrayPOD.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

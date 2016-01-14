@@ -85,6 +85,7 @@
     <ClInclude Include="..\..\FantomWaves\c4996killer.h" />
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />
     <ClInclude Include="..\..\FantomWaves\fw_Array.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_ArrayPOD.h" />
     <ClInclude Include="..\..\FantomWaves\fw_Bindata.h" />
     <ClInclude Include="..\..\FantomWaves\fw_Binfile.h" />
     <ClInclude Include="..\..\FantomWaves\fw_bitflag.h" />
