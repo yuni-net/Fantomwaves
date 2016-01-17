@@ -19,8 +19,16 @@ namespace fw
 		void add(const std::string & text);
 
 		/**
-		 @brief 任意のバイナリデータを追加する。
-		 */
+		@brief Bindataのバイナリデータを追加する。
+		*/
+		template<typename T> void add(const Bindata & data)
+		{
+			mybuffer.add(data.mybuffer());
+		}
+
+		/**
+		@brief 任意のバイナリデータを追加する。
+		*/
 		template<typename T> void add(const T & data)
 		{
 			mybuffer.add(&data, sizeof(T));
