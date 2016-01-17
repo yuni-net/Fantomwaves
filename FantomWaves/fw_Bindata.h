@@ -31,7 +31,7 @@ namespace fw
 		*/
 		template<typename T> void add(const T & data)
 		{
-			mybuffer.add(&data, sizeof(T));
+			mybuffer.add(reinterpret_cast<const char *>(&data), sizeof(T));
 		}
 
 
