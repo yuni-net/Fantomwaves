@@ -44,7 +44,7 @@ namespace fw
 		int get_address_bytes() const;
 
 	private:
-		IP ip;
+		IP ip;	// todo •Û‚µ‚Ä‚¢‚é‚ªg‚í‚ê‚Ä‚¢‚È‚¢
 		sockaddr_in addr;
 
 
