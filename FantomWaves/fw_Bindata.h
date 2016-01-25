@@ -21,10 +21,7 @@ namespace fw
 		/**
 		@brief Bindataのバイナリデータを追加する。
 		*/
-		template<typename T> void add(const Bindata & data)
-		{
-			mybuffer.add(data.mybuffer());
-		}
+		void add(const Bindata & data);
 
 		/**
 		@brief 任意のバイナリデータを追加する。
