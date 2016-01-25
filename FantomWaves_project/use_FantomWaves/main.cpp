@@ -1,34 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <FantomWaves.h>
 //#include "../../FantomWaves/FantomWaves.h"
 
 int main()
 {
-	fw::uint size = fw::filesize("test.txt");
-	int integer = 2525;
-	std::string stdstring = "テストだよー!";
-	fw::Array<std::string> fwvector;
-	fwvector.add(std::string("No.01")).add(std::string("No.02")).add(std::string("日本語もおｋ？"));
-	fw::Binfile("test.dat").clear() << integer << stdstring << fwvector;
+	fw::Bindata data;
+	data.add(std::string("test"));
+	data.add(long(2525));
+	data.add(float(3.1415));
 
-	int gotint = 0;
-	std::string gotstr;
-	fw::Array<std::string> gotvec;
-	fw::Binfile bf("test.dat");
-	bf >> gotint;
-	bf >> gotstr;
-	bf >> gotvec;
+	fw::Bindata data_container;
+	data_container.add(std::string("data_container"));
+	data_container.add(data);
+	data_container.add(std::string("end"));
 
-	printf("gotint:%d\n", gotint);
-	printf("gotstr:%s\n", gotstr.c_str());
-	for (unsigned int cnt = 0; cnt < gotvec.size(); ++cnt)
-	{
-		const std::string & str = gotvec[cnt];
-		printf("gotvec[%d]:%s\n", cnt, str.c_str());
-	}
+	std::string str_con;
+	std::string str_test;
+	long integer;
+	float decimal;
+	std::string str_end;
+	data_container >> str_con >> str_test >> integer >> decimal >> str_end;
 
-	printf("\n\nfinished\n\n");
+	std::cout << str_con << std::endl;
+	std::cout << str_test << std::endl;
+	std::cout << integer << std::endl;
+	std::cout << decimal << std::endl;
+	std::cout << str_end << std::endl;
 
 	return 0;
 }

@@ -44,6 +44,10 @@ namespace fw
 		mybuffer.add(text.c_str(), text.length() + 1);
 	}
 
+	void Bindata::add(const Bindata & data)
+	{
+		mybuffer.add(data.mybuffer);
+	}
 
 
 	void Bindata::show_cmd() const
