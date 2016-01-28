@@ -33,6 +33,23 @@ namespace fw
 		set(address);
 	}
 
+	IP::IP(const IP & another)
+	{
+		set(another);
+	}
+
+	IP & IP::operator=(const IP & another)
+	{
+		set(another);
+		return *this;
+	}
+
+	void IP::set(const IP & another)
+	{
+		hostname = another.hostname;
+	}
+
+
 
 	void IP::set(const uchar a, const uchar b, const uchar c, const uchar d)
 	{

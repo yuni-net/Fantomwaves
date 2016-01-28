@@ -35,6 +35,24 @@ namespace fw
 		IP(const std::string & hostname);
 
 		/**
+		@brief 別のIPと同じIPアドレスで初期化する。
+		@param コピーしたいIPアドレスを指定する。
+		*/
+		IP(const IP & another);
+
+		/**
+		@brief 別のIPからIPアドレスをコピーする。
+		@param コピーしたいIPアドレスを指定する。
+		*/
+		IP & operator=(const IP & another);
+
+		/**
+		@brief 別のIPと同じIPアドレスを設定する。
+		@param コピーしたいIPアドレスを指定する。
+		*/
+		void set(const IP & another);
+
+		/**
 		@brief IPアドレスを設定する。
 		@param 例えば"192.168.11.22"ならset(192, 168, 11, 22)とする。
 		*/
