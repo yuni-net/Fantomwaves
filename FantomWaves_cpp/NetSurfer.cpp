@@ -25,6 +25,7 @@ namespace fw
 
 	NetSurfer & NetSurfer::operator=(const NetSurfer & another)
 	{
+		ip = another.ip;
 		addr = another.addr;
 		return *this;
 	}
