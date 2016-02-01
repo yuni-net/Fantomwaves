@@ -65,11 +65,9 @@ namespace fw
 			return false;
 		}
 
-		const int data_bytes = get_received_bytes();
-		buffer.set_size(data_bytes);
+		buffer.set_size(65536);
 		sockaddr_in cliant_addr;
 		int addr_len = sizeof(sockaddr_in);
-
 		const int received_bytes = recvfrom(
 			sock,
 			buffer.buffer(),
@@ -83,8 +81,10 @@ namespace fw
 			printf("failed to recvfrom\n");
 			int e = WSAGetLastError();
 			printf("error_code:"); printf("%d\n", e);
+			return false;
 		}
 
+		buffer.set_size(received_bytes);
 		cliant_info.set_address(cliant_addr);
 
 		return true;

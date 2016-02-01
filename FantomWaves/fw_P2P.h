@@ -5,6 +5,7 @@
 
 namespace fw
 {
+
 	class Bindata;
 
 	/**
@@ -14,6 +15,27 @@ namespace fw
 	    よって、一定間隔でデータを送り続けても問題ない送信先に対してあらかじめsendを行ってから通常の利用を開始することを推奨します。
 	 (3)P2Pをインスタンス化した時点で、そのインスタンス専用のソケットが作成されます。
 	 */
+	// example
+#if 0
+	fw::P2P p2p;
+	const IP ip(192, 168, 56, 1);
+	const unsigned short port = 6666;
+	fw::NetSurfer surfer(ip, port);
+	fw::Bindata data;
+	data.add(std::string("example"));
+	p2p.send(surfer, data);
+	while (true)
+	{
+		if (p2p.are_ther_any_left_datas() == false)
+		{
+			continue;
+		}
+
+		fw::Bindata received_data;
+		fw::NetSurfer sent_user;
+		p2p.pop_received_data(received_data, sent_user);
+	}
+#endif
 	class P2P
 	{
 	public:
@@ -56,28 +78,6 @@ namespace fw
 		 */
 		unsigned short get_port() const;
 
-
-		// example
-#if 0
-		fw::P2P p2p;
-		const IP ip(192, 168, 56, 1);
-		const unsigned short port = 6666;
-		fw::NetSurfer surfer(ip, port);
-		fw::Bindata data;
-		data.add(std::string("example"));
-		p2p.send(surfer, data);
-		while (true)
-		{
-			if(p2p.are_ther_any_left_datas()==false)
-			{
-				continue;
-			}
-
-			fw::Bindata received_data;
-			fw::NetSurfer sent_user;
-			p2p.pop_received_data(received_data, sent_user);
-		}
-#endif
 
 
 		P2P();
