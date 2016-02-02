@@ -76,6 +76,9 @@
     <Filter Include="FantomWaves\c4996killer">
       <UniqueIdentifier>{c189858a-d885-40ea-bcc2-af5df30b31d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\gettimeofday">
+      <UniqueIdentifier>{b3e9d368-ffe2-4375-a6b5-5cbd22fb716f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\fw_publicdef.h">
@@ -204,6 +207,9 @@
     <ClInclude Include="..\..\FantomWaves\c4996killer.h">
       <Filter>FantomWaves\c4996killer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_gettimeofday.h">
+      <Filter>FantomWaves\gettimeofday</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -275,6 +281,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\c4996killer.cpp">
       <Filter>FantomWaves\c4996killer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\gettimeofday.cpp">
+      <Filter>FantomWaves\gettimeofday</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
