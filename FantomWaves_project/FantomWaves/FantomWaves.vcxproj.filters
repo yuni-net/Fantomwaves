@@ -72,5 +72,6 @@
     <ClInclude Include="..\..\FantomWaves\fw_xrandom.h" />
     <ClInclude Include="..\..\FantomWaves\fw_xy2radian.h" />
     <ClInclude Include="..\..\FantomWaves\fw_zeromemory.h" />
+    <ClInclude Include="..\..\FantomWaves\fw_ArrayPOD.h" />
   </ItemGroup>
 </Project>

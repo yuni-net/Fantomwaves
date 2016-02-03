@@ -1,5 +1,5 @@
 #include "fw_typedef.h"
-#include "fw_Array.h"
+#include "fw_ArrayPOD.h"
 
 namespace fw
 {
@@ -54,7 +54,7 @@ namespace fw
 
 		Bindata();
 	private:
-		Array<char> mybuffer;
+		ArrayPOD<char> mybuffer;
 		unsigned int read_beg;
 	};
 }

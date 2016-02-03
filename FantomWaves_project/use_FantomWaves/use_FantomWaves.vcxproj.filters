@@ -210,6 +210,9 @@
     <ClInclude Include="..\..\FantomWaves\fw_gettimeofday.h">
       <Filter>FantomWaves\gettimeofday</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_ArrayPOD.h">
+      <Filter>FantomWaves</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

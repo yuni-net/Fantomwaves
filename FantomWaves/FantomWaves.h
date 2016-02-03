@@ -97,6 +97,7 @@
 #include "fw_view.h"
 #include "fw_trade.h"
 #include "fw_Array.h"
+#include "fw_ArrayPOD.h"
 #include "fw_vtypedef.h"
 
 #ifdef FW_TYPEDEF_
