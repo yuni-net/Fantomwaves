@@ -2,6 +2,7 @@
 
 #include "fw_includes.h"
 #include "fw_NetSurfer.h"
+#include "fw_thread.h"
 
 namespace fw
 {
@@ -87,11 +88,11 @@ namespace fw
 		sockaddr_in addr;
 		mutable NetSurfer lifeline;	// lifeline for UDP hole
 		mutable bool did_set_lifeline;
-		mutable UINT_PTR timer_id;
+		mutable Thread thread;
 
 
 		int get_received_bytes() const;
 		void set_lifeline_ifneed(const NetSurfer & surfer) const;
-		static void CALLBACK call_I_still_alive(HWND, UINT, UINT_PTR, DWORD);
+		static fw_thread_ call_Im_still_alive(void * parameter);
 	};
 }
