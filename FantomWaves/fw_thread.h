@@ -15,6 +15,16 @@ namespace fw{
 	*/
 	void newthread(void(*function)(void*), void * parameter);
 
+
+	/**
+	新規スレッドの作成から管理、破棄までを簡単に行えます。
+	新規スレッド上で実行したい関数は
+	fw_thread_ your_function(void * parameter) {
+		// todo your job
+		return 0;
+	}
+	という風に記述すれば大丈夫です。
+	*/
 	class Thread{
 	public:
 
