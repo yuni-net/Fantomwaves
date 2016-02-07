@@ -71,8 +71,20 @@ namespace fw
 
 	Bindata & Bindata::pop(std::string & text)
 	{
+		copy(text);
+		proceed(text.length() + 1);
+		return *this;
+	}
+
+	Bindata & Bindata::copy(std::string & text)
+	{
 		text = mybuffer.address(read_beg);
-		read_beg += text.length() + 1;
+		return *this;
+	}
+
+	Bindata & Bindata::proceed(unsigned int bytes)
+	{
+		read_beg += bytes;
 		return *this;
 	}
 
