@@ -44,7 +44,17 @@ namespace fw
 		Bindata & operator>>(std::string & text);
 		template<typename T> Bindata & operator>>(T & data)
 		{
-			memcpy(&data, mybuffer.address(read_beg), sizeof(T));
+			return pop(data);
+		}
+
+		Bindata & pop(std::string & text);
+		template<typename T> Bindata & pop(T & data)
+		{
+			return pop(&data, 1);
+		}
+		template<typename T> Bindata & pop(T * buffer, unsigned int size)
+		{
+			memcpy(buffer, mybuffer.address(read_beg), sizeof(T)*size);
 			read_beg += sizeof(T);
 			return *this;
 		}
