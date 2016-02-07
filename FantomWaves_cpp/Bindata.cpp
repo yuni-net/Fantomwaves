@@ -66,10 +66,14 @@ namespace fw
 
 	Bindata & Bindata::operator>>(std::string & text)
 	{
+		return pop(text);
+	}
+
+	Bindata & Bindata::pop(std::string & text)
+	{
 		text = mybuffer.address(read_beg);
 		read_beg += text.length() + 1;
 		return *this;
 	}
-
 
 }
