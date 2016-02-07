@@ -54,10 +54,23 @@ namespace fw
 		}
 		template<typename T> Bindata & pop(T * buffer, unsigned int size)
 		{
-			memcpy(buffer, mybuffer.address(read_beg), sizeof(T)*size);
-			read_beg += sizeof(T);
+			copy(buffer, size);
+			proceed(sizeof(T)*size);
 			return *this;
 		}
+
+		Bindata & copy(std::string & text);
+		template<typename T> Bindata & copy(T & data)
+		{
+			return pop(&data, 1);
+		}
+		template<typename T> Bindata & copy(T * buffer, unsigned int size)
+		{
+			memcpy(buffer, mybuffer.address(read_beg), sizeof(T)*size);
+			return *this;
+		}
+
+		Bindata & proceed(unsigned int bytes);
 
 
 
