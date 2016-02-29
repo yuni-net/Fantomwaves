@@ -91,6 +91,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\filesize.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\gettimeofday.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\IP.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\judge_endian.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\NetSurfer.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\NetWork.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\newdire.cpp" />
