@@ -88,4 +88,9 @@ namespace fw
 		return *this;
 	}
 
+	Bindata & Bindata::seek_head()
+	{
+		read_beg = 0;
+		return *this;
+	}
 }
