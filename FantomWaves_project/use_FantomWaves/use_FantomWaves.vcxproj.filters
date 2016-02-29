@@ -79,6 +79,9 @@
     <Filter Include="FantomWaves\gettimeofday">
       <UniqueIdentifier>{b3e9d368-ffe2-4375-a6b5-5cbd22fb716f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\judge_endian">
+      <UniqueIdentifier>{5fc917c2-3719-413a-a7c6-1ed27f847c5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\fw_publicdef.h">
@@ -213,6 +216,9 @@
     <ClInclude Include="..\..\FantomWaves\fw_ArrayPOD.h">
       <Filter>FantomWaves</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_judge_endian.h">
+      <Filter>FantomWaves\judge_endian</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -287,6 +293,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\gettimeofday.cpp">
       <Filter>FantomWaves\gettimeofday</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\judge_endian.cpp">
+      <Filter>FantomWaves\judge_endian</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
