@@ -71,6 +71,7 @@ namespace fw
 		}
 
 		Bindata & proceed(unsigned int bytes);
+		Bindata & seek_head();
 
 
 
