@@ -29,6 +29,7 @@
     <ClCompile Include="..\..\FantomWaves_cpp\c4996killer.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\gettimeofday.cpp" />
     <ClCompile Include="..\..\FantomWaves_cpp\judge_endian.cpp" />
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P_base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\FantomWaves.h" />

@@ -3,6 +3,7 @@
 #include "fw_includes.h"
 #include "fw_NetSurfer.h"
 #include "fw_thread.h"
+#include "fw_P2P_base.h"
 
 namespace fw
 {
@@ -14,7 +15,10 @@ namespace fw
 	 (1)一度もsendを行っていない状態でデータを受け取ることはあり得ません。
 	 (2)最初のsendのときに指定した送信先に一定間隔(6秒毎)でダミーデータ(1byte)を送り続けることによって通信状態(UDPホール)を維持します。
 	    よって、一定間隔でデータを送り続けても問題ない送信先に対してあらかじめsendを行ってから通常の利用を開始することを推奨します。
-	 (3)P2Pをインスタンス化した時点で、そのインスタンス専用のソケットが作成されます。
+	 (3)ダミーデータの送信は別スレッドにて行われるため、このクラスを破棄する際は注意が必要です。
+		まずdisconnect_lifeline()を呼び出してください。別スレッドに終了信号が送られます。
+		次にしばらく時間を置き、スレッドが完全に終了した頃を見計らってからこのインスタンスを破棄してください。
+	 (4)P2Pをインスタンス化した時点で、そのインスタンス専用のソケットが作成されます。
 	 */
 	// example
 #if 0
@@ -37,10 +41,11 @@ namespace fw
 		p2p.pop_received_data(received_data, sent_user);
 	}
 #endif
-	class P2P
+	class P2P :public P2P_base
 	{
 	public:
 		/**
+		 @Override
 		 @brief データを送ります。
 		 @param
 			surfer: 送信先を指定します。
@@ -50,6 +55,16 @@ namespace fw
 			false: 失敗です。
 		 */
 		bool send(const NetSurfer & surfer, const Bindata & data) const;
+
+		/**
+		ダミーデータの送信は別スレッドにて行われるため、このクラスを破棄する際は注意が必要です。
+		まずdisconnect_lifeline()を呼び出してください。別スレッドに終了信号が送られます。
+		次にしばらく時間を置き、スレッドが完全に終了した頃を見計らってからこのインスタンスを破棄してください。
+		*/
+		void disconnect_lifeline();
+
+#if 0
+		// これらの関数は親クラスP2P_baseによって既に定義されています。
 
 		/**
 		 @brief 見取り出しの受信データがあるかどうか調べます。
@@ -78,21 +93,23 @@ namespace fw
 		 @detail 一度もsendしていない状態の場合、この関数が返す値は無効な値です。
 		 */
 		unsigned short get_port() const;
+#endif
+
+
+
+
+
 
 
 
 		P2P();
-		~P2P();
 	private:
-		SOCKET sock;
-		sockaddr_in addr;
-		mutable NetSurfer lifeline;	// lifeline for UDP hole
+		// 'lifeline' is for UDP hole.
+		mutable NetSurfer lifeline;
 		mutable bool did_set_lifeline;
-		mutable Thread thread;
 		bool am_I_dying;
 
 
-		int get_received_bytes() const;
 		void set_lifeline_ifneed(const NetSurfer & surfer) const;
 		static void call_I_still_alive(void * parameter);
 	};
