@@ -126,6 +126,7 @@
 #include "fw_UDP_cliant.h"
 #include "fw_gettimeofday.h"
 #include "fw_judge_endian.h"
+#include "fw_P2P_without_lifeline.h"
 
 #ifndef FantomWaves_developing_
 	#ifdef _DEBUG
