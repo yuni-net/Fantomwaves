@@ -219,6 +219,12 @@
     <ClInclude Include="..\..\FantomWaves\fw_judge_endian.h">
       <Filter>FantomWaves\judge_endian</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_P2P_base.h">
+      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_P2P_without_lifeline.h">
+      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -296,6 +302,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\judge_endian.cpp">
       <Filter>FantomWaves\judge_endian</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\P2P_base.cpp">
+      <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
