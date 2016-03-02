@@ -17,10 +17,7 @@ namespace fw
 		if (did_set_lifeline){ return; }
 		lifeline = surfer;
 		did_set_lifeline = true;
-		// todo begin calling 'I am still alive' at regular intervals.
-		long parameter = reinterpret_cast<long>(this);
-		thread.set(call_Im_still_alive, reinterpret_cast<void *>(parameter));
-		thread.begin();
+		fw::newthread(call_I_still_alive, fw::pointer_cast<void *>(const_cast<P2P *>(this)));
 	}
 
 
@@ -98,12 +95,15 @@ namespace fw
 		sock = INVALID_SOCKET;
 		if (NetWork::init_ifneed() == false){ return; }
 		sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		am_I_dying = false;
 	}
 	P2P::~P2P()
 	{
+		am_I_dying = true;
 		if (sock != INVALID_SOCKET)
 		{
 			closesocket(sock);
+			sock = INVALID_SOCKET;
 		}
 	}
 
@@ -143,12 +143,16 @@ namespace fw
 		return received_bytes;
 	}
 
-	fw_thread_ P2P::call_Im_still_alive(void * parameter)
+	void P2P::call_I_still_alive(void * parameter)
 	{
 		static const unsigned int interval_mili_sec = 6000;
 		while (true)
 		{
 			const P2P & self = *reinterpret_cast<P2P *>(parameter);
+			if (self.am_I_dying)
+			{
+				return;
+			}
 			Bindata data;
 			data.add(char(0));
 			self.send(self.lifeline, data);

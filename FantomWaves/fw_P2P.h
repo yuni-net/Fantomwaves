@@ -89,10 +89,11 @@ namespace fw
 		mutable NetSurfer lifeline;	// lifeline for UDP hole
 		mutable bool did_set_lifeline;
 		mutable Thread thread;
+		bool am_I_dying;
 
 
 		int get_received_bytes() const;
 		void set_lifeline_ifneed(const NetSurfer & surfer) const;
-		static fw_thread_ call_Im_still_alive(void * parameter);
+		static void call_I_still_alive(void * parameter);
 	};
 }
