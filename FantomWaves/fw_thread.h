@@ -25,41 +25,29 @@ namespace fw{
 	}
 	という風に記述すれば大丈夫です。
 	*/
-	class Thread{
+	class Thread
+	{
 	public:
 
-		Thread(){ nullet(); }
+		Thread();
 
 		/***
 		@brief 実行したい関数とそこに指定する引数を設定します。
 		*/
-		void set(unsigned(__stdcall * function)(void*), void * parameter){
-			function_ = function;
-			parameter_ = parameter;
-		}
-		Thread(unsigned(__stdcall * function)(void*), void * parameter){
-			handle = 0;
-			function_ = function;
-			parameter_ = parameter;
-		}
+		void set(unsigned(__stdcall * function)(void*), void * parameter);
+		Thread(unsigned(__stdcall * function)(void*), void * parameter);
 
 		/***
 		@brief 実行したい関数を設定します。
 		*/
-		void set(unsigned(__stdcall * function)(void*)){ function_ = function; }
-		Thread(unsigned(__stdcall * function)(void*)){
-			nullet();
-			function_ = function;
-		}
+		void set(unsigned(__stdcall * function)(void*));
+		Thread(unsigned(__stdcall * function)(void*));
 
 		/***
 		@brief 引数に指定するパラメーターを設定します。
 		*/
-		void set(void * parameter){ parameter_ = parameter; }
-		Thread(void * parameter){
-			nullet();
-			parameter_ = parameter;
-		}
+		void set(void * parameter);
+		Thread(void * parameter);
 
 		/***
 		@brief 関数を別スレッドで実行します。
@@ -68,57 +56,38 @@ namespace fw{
 			parameter: 関数の引数に渡すパラメーター
 		@return true...成功 false...失敗
 		*/
-		bool begin(unsigned(__stdcall * function)(void*), void * parameter){
-			close();
-			if (function == NULL){
-#ifdef FW_THREAD_POP_UP_
-				fw::popup("呼び出す関数が指定されていないか、もしくは無効です","fw::threadエラー");
-#endif
-				throw std::invalid_argument("fw::thread_func_error");
-			}
-
-			uintptr_t h = _beginthreadex(NULL, 0, function, parameter, 0, NULL);
-			handle = reinterpret_cast<void *>(h);
-			return handle != NULL;
-		}
-		bool begin(unsigned(__stdcall * function)(void*)){ return begin(function, parameter_); }
-		bool begin(void * parameter){ return begin(function_, parameter); }
-		bool begin(){ return begin(function_, parameter_); }
+		bool begin(unsigned(__stdcall * function)(void*), void * parameter);
+		bool begin(unsigned(__stdcall * function)(void*));
+		bool begin(void * parameter);
+		bool begin();
 
 		/***
 		@brief 関数がまだ実行中かどうかを取得します。
 		@return true...実行中 false...実行は既に終了している
 		*/
-		bool working() const {
-			if (handle == NULL) return false;
-			GetExitCodeThread(handle, &result_);
-			if (result_ == STILL_ACTIVE) return true;
-			return false;
-		}
+		bool working() const;
 
 		/***
 		@brief 関数がまだ実行中かどうかを取得します。
 		@param スレッドの終了コードを取得する変数をここに指定します。
 		@return true...実行中 false...実行は既に終了している
 		*/
-		bool working(unsigned long & target){
-			if (working()) return true;
-
-			target = result_;
-			return false;
-		}
-		bool resting(){ return !working(); }
+		bool working(unsigned long & target);
+		bool resting();
 
 		/***
 		@brief スレッドの終了コードを取得します。
 		*/
-		unsigned long result() const { return result_; }
+		unsigned long result() const;
 
 		/***
-		@brief スレッドを終了させます。
+		@brief スレッドのハンドルを一つ解放します。
+		@warning
+			スレッドのハンドルを解放してもスレッドは自動で終了したりしません。
+			スレッドが自ら終了するように仕向け、スレッドが完全に終了した頃を見計らってからハンドルを解放する必要があります。
 		*/
-		void close(){ if (handle != 0) CloseHandle(handle); }
-		~Thread(){ close(); }
+		void close_handle();
+		~Thread();
 
 
 
@@ -128,11 +97,7 @@ namespace fw{
 		unsigned(__stdcall * function_)(void*);
 		void * parameter_;
 
-		void nullet(){
-			handle = NULL;
-			function_ = NULL;
-			parameter_ = NULL;
-		}
+		void nullet();
 
 	};
 
