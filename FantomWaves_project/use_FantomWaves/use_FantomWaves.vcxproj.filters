@@ -82,6 +82,9 @@
     <Filter Include="FantomWaves\judge_endian">
       <UniqueIdentifier>{5fc917c2-3719-413a-a7c6-1ed27f847c5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FantomWaves\NetWork\BroadCaster">
+      <UniqueIdentifier>{05bcd2f7-4df8-44ea-9329-e548b5a7f6ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\FantomWaves\fw_publicdef.h">
@@ -225,6 +228,9 @@
     <ClInclude Include="..\..\FantomWaves\fw_P2P_without_lifeline.h">
       <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\FantomWaves\fw_BroadCaster.h">
+      <Filter>FantomWaves\NetWork\BroadCaster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -305,6 +311,9 @@
     </ClCompile>
     <ClCompile Include="..\..\FantomWaves_cpp\P2P_base.cpp">
       <Filter>FantomWaves\NetWork\UDP\P2P</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\FantomWaves_cpp\BroadCaster.cpp">
+      <Filter>FantomWaves\NetWork\BroadCaster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
